@@ -83,51 +83,51 @@ Main Object: Car Interior
         Name 4 nouns you'll find on the [Sub Object]
             1) paddle shifters
             2) 'cruise control' controls
-            3) 
-            4) 
+            3) car horn
+            4) infotainment system controls
         Name 2 actions that the [Sub Object] can do:
             1) adjust cruise control settings.
-            2)
+            2) sound horn
         
     Sub Object: Instrument Cluster
         Name 4 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
-            4)
+            1) engine thermometer
+            2) speedometer
+            3) gear indicator
+            4) tachometer
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) display car speed
+            2) display engine rpm
+            3) display exterior temperature
     
     Sub Object: Environment Controls
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) on/off button
+            2) temperature control
+            3) fan speed control
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) be on/off
+            2) adjust temperature
+            3) adjust fan speed
 
     Sub Object: Infotainment System
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) on/off button
+            2) volume knob
+            3) skip track button
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) play radio
+            2) play CD
+            3) be on/off
 
     Sub Object: Seat 
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) fabric
+            2) seat tilt lever
+            3) seat belt recepticle
         Name 2 actions that the [Sub Object] can do:
-            1)
-            2)
+            1) be leather
+            2) recline
 */
 
 /*
