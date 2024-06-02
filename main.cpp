@@ -196,53 +196,7 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1) Bicycle
-5 properties:
-    1) number of gears (int)
-    2) amount of air required in tires (PSI) (float)
-    3) type of handlebars (std::string)
-    4) number of water bottle holders (int)
-    5) number of times used per week (int)
-3 things it can do:
-    1) transport a person
-    2) roll down a hill
-    3) need repairs
 
-Thing 2) Recording Studio
-5 properties:
-    1) number of microphones (int)
-    2) number of clients (int)
-    3) cost of food needed per week (loat)
-    4) cost of business insurance needed (float)
-    5) number of employees (int)
-3 things it can do:
-    1) record audio
-    2) send invoices to clients
-    3) host events
-
-Thing 3) Audio Interface
-5 properties:
-    1) number of inputs (int)
-    2) types of inputs (int)
-    3) types of enclosure material (std::string)
-    4) types of outputs (int)
-    5) locations of inputs (std::string)
-3 things it can do:
-    1) receive audio signals
-    2) display signal levels
-    3) output audio and MIDI signals
-
-Thing 4) Stereo Widener Audio Plugin
-5 properties:
-    1) number of interface elements (int)
-    2) color of interface elements (std::string)
-    3) amount of memory required (float)
-    4) font size of tool tips (int)
-    5) location of interface elements within GUI (float)
-3 things it can do:
-    1) capture audio signal
-    2) display text descriptions
-    3) widen audio signal
 */
 
 /*
@@ -337,17 +291,7 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 
-Thing 10) Equalizer Audio Plugin
-5 properties:
-    1) GUI
-    2) license
-    3) manufacturer
-    4) signal processor
-    5) build format
-3 things it can do:
-    1) display changes to frequency level
-    2) attenuate audio frequency level
-    3) accomodate multiple hosts
+
  */
 
  /*
@@ -434,6 +378,108 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
+
+ */
+
+/*
+=================
+Part 1d - Step 3: Commit
+=================
+Now that you've made changes to the code, make a commit!
+Be sure to make the commit message meaningful.
+*/
+
+/*
+================
+Part 1d - Step 4: Assignment
+================
+    - write the name of the primitive type you'll be using after each property for UDTs 5 - 9.
+    - You already did this for UDTs 1-4 in Part 1c.
+    - Pick properties that can be represented with 'int float double bool char std::string'
+    
+example: 
+    Display:
+        Number of Pixels (int)
+        Amount of Power consumed (milliwatt-hours) (float)
+        Brightness (double)
+        width in cm (int)
+        height in cm (int)
+*/
+
+/*
+=================
+Part 1d - Step 5: Commit
+=================
+Now that you've made changes to the code, make a commit!
+Be sure to make the commit message meaningful.
+*/
+
+/*
+===================
+Part 1d - Step 6: assignment
+===================
+You've just defined 10 UDTs!
+4 of them are unrelated (UDTs 1-4).
+5 of them form the sub-objects that make up the 10th UDT. 
+
+MOVE THEM to the space below this block comment and put them in numerical order 
+(1 - 10).
+    DO NOT COPY. 
+    CUT AND PASTE. 
+    I do not want to see 2 copies of your Plain-English UDTs.  
+    I only want to see the 10 UDTs written BELOW this block comment, in numerical order (1 - 10).
+    simply CUT and PASTE them in the space provided below:
+*/
+
+/*
+Thing 1) Bicycle
+5 properties:
+    1) number of gears (int)
+    2) amount of air required in tires in PSI (float)
+    3) type of handlebars (std::string)
+    4) number of water bottle holders (int)
+    5) number of times used per week (int)
+3 things it can do:
+    1) transport a person
+    2) roll down a hill
+    3) need repairs
+
+Thing 2) Recording Studio
+5 properties:
+    1) number of microphones (int)
+    2) number of clients (int)
+    3) cost of food needed per week (float)
+    4) cost of business insurance (float)
+    5) number of employees (int)
+3 things it can do:
+    1) record audio
+    2) send invoices to clients
+    3) host events
+
+Thing 3) Audio Interface
+5 properties:
+    1) number of inputs (int)
+    2) types of inputs (std::string)
+    3) types of enclosure material (std::string)
+    4) types of outputs (std::string)
+    5) locations of inputs (std::string)
+3 things it can do:
+    1) receive audio signals
+    2) display signal levels
+    3) output audio and MIDI signals
+
+Thing 4) Stereo Widener Audio Plugin
+5 properties:
+    1) number of interface elements (int)
+    2) color of interface elements (std::string)
+    3) amount of memory required (float)
+    4) font size of tool tips (int)
+    5) location of interface elements within GUI (float)
+3 things it can do:
+    1) capture audio signal
+    2) display text descriptions
+    3) widen audio signal
+
 Thing 5) Graphical User Interface
 5 properties:
     1) width in cm (int)
@@ -493,65 +539,20 @@ Thing 9) Build Format
     1) function in Pro Tools
     2) function in Logic
     3) function in Reaper
- */
 
-/*
-=================
-Part 1d - Step 3: Commit
-=================
-Now that you've made changes to the code, make a commit!
-Be sure to make the commit message meaningful.
+Thing 10) Equalizer Audio Plugin
+5 properties:
+        1) Graphical User Interface
+        2) license
+        3) manufacturer
+        4) signal processor
+        5) build format
+3 things it can do:
+        1) display changes to frequency level
+        2) attenuate audio frequency level
+        3) accomodate multiple hosts
 */
-
-/*
-================
-Part 1d - Step 4: Assignment
-================
-    - write the name of the primitive type you'll be using after each property for UDTs 5 - 9.
-    - You already did this for UDTs 1-4 in Part 1c.
-    - Pick properties that can be represented with 'int float double bool char std::string'
     
-example: 
-    Display:
-        Number of Pixels (int)
-        Amount of Power consumed (milliwatt-hours) (float)
-        Brightness (double)
-        width in cm (int)
-        height in cm (int)
-*/
-
-/*
-=================
-Part 1d - Step 5: Commit
-=================
-Now that you've made changes to the code, make a commit!
-Be sure to make the commit message meaningful.
-*/
-
-/*
-===================
-Part 1d - Step 6: assignment
-===================
-You've just defined 10 UDTs!
-4 of them are unrelated (UDTs 1-4).
-5 of them form the sub-objects that make up the 10th UDT. 
-
-MOVE THEM to the space below this block comment and put them in numerical order 
-(1 - 10).
-    DO NOT COPY. 
-    CUT AND PASTE. 
-    I do not want to see 2 copies of your Plain-English UDTs.  
-    I only want to see the 10 UDTs written BELOW this block comment, in numerical order (1 - 10).
-    simply CUT and PASTE them in the space provided below:
-*/
-
-
-
-
-
-
-
-
 /*
 =================
 Part 1d - Step 7: Commit
@@ -1004,7 +1005,7 @@ Be sure to make the commit message meaningful.
 Part 1e - Step 19: Request a review
 =================
 */
-} //end namespace Part1E_Instructions
+} // end namespace Part1E_Instructions
 
 /*
 paste your code below
