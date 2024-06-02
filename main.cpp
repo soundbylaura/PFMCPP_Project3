@@ -220,17 +220,17 @@ Thing 2) Recording Studio
     2) send invoices to clients
     3) host events
 
-Thing 3) Equalizer Audio Plugin
+Thing 3) Audio Interface
 5 properties:
-    1) type of interface elements (std::string)
-    2) number of adjustable frequency bands (int)
-    3) number of adjustable gain knobs (int)
-    4) amount of gain attenuation (float)
-    5) types of selectable functions (std::string)
+    1) number of inputs (int)
+    2) types of inputs (int)
+    3) types of enclosure material (std::string)
+    4) types of outputs (int)
+    5) locations of inputs (std::string)
 3 things it can do:
-    1) choose audio frequency
-    2) boost audio frequency
-    3) mute aduio signal
+    1) receive audio signals
+    2) display signal levels
+    3) output audio and MIDI signals
 
 Thing 4) Stereo Widener Audio Plugin
 5 properties:
@@ -337,17 +337,17 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 
-Thing 10) Audio Interface
+Thing 10) Equalizer Audio Plugin
 5 properties:
-    1) number of inputs
-    2) types of inputs
-    3) types of enclosure material
-    4) types of outputs
-    5) locations of inputs
+    1) type of interface elements (std::string)
+    2) number of adjustable frequency bands (int)
+    3) number of adjustable gain knobs (int)
+    4) amount of gain attenuation (float)
+    5) types of selectable functions (std::string)
 3 things it can do:
-    1) receive audio signals
-    2) display signal levels
-    3) output audio and MIDI signals
+    1) choose audio frequency
+    2) boost audio frequency
+    3) mute aduio signal
  */
 
  /*
