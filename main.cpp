@@ -339,15 +339,15 @@ Define an object that is made of 5 sub-objects.
 
 Thing 10) Equalizer Audio Plugin
 5 properties:
-    1) interface
-    2) audio input
-    3) audio output
+    1) GUI
+    2) license
+    3) manufacturer
     4) signal processor
-    5) bypass
+    5) build format
 3 things it can do:
     1) display changes to frequency level
     2) attenuate audio frequency level
-    3) bypass pugin functions
+    3) accomodate multiple hosts
  */
 
  /*
@@ -434,65 +434,65 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
+Thing 5) Graphical User Interface
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) width in cm (int)
+    2) height in cm (int)
+    3) number of frequency selector dials (int)
+    4) names of frequency selector dials (std::string)
+    5) color of background (std::string)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) display input level
+    2) display attenuation level(s) of frequency band(s)
+    3) allow user to modify parameters
 
-Thing 6)
+Thing 6) License
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) text (std::string)
+    2) font size (int)
+    3) format (std::string)
+    4) text color (std::string)
+    5) executed (bool)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) provide information
+    2) link to manufacturer website
+    3) not be copied
 
-Thing 7)
+Thing 7) Manufacturer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) name (std::string)
+    2) location (std::string)
+    3) number of employees (int)
+    4) amount of income per year (float)
+    5) cost of office equipment (float)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) create plugins
+    2) set authorization methods
+    3) sign legal agreements
 
-Thing 8)
+Thing 8) Signal Processor
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) samples (float)
+    2) channels (int)
+    3) type (std::string)
+    4) buffer (float)
+    5) program (int)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) receive audio
+    2) convert raw audio level to decibels
+    3) send audio
 
-Thing 9)
+Thing 9) Build Format
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) AAX (std::string)
+    2) VST (std::string)
+    3) VST3 (std::string)
+    4) AU (std::string)
+    5) Standalone (std::string)
 3 things it can do:
-    1)
-    2)
-    3)
+    1) function in Pro Tools
+    2) function in Logic
+    3) function in Reaper
  */
 
 /*
