@@ -198,11 +198,11 @@ Part 1b - Step 2: Assignment
 
 Thing 1) Bicycle
 5 properties:
-    1) number of gears
-    2) amount of air required in tires
-    3) type of handlebars
-    4) number of water bottle holders
-    5) number of times used per week
+    1) number of gears (int)
+    2) amount of air required in tires (PSI) (float)
+    3) type of handlebars (std::string)
+    4) number of water bottle holders (int)
+    5) number of times used per week (int)
 3 things it can do:
     1) transport a person
     2) roll down a hill
@@ -210,11 +210,11 @@ Thing 1) Bicycle
 
 Thing 2) Recording Studio
 5 properties:
-    1) number of microphones
-    2) number of clients
-    3) amount of food needed per week
-    4) cost of business insurance needed
-    5) number of employees
+    1) number of microphones (int)
+    2) number of clients (int)
+    3) cost of food needed per week (loat)
+    4) cost of business insurance needed (float)
+    5) number of employees (int)
 3 things it can do:
     1) record audio
     2) send invoices to clients
@@ -222,11 +222,11 @@ Thing 2) Recording Studio
 
 Thing 3) Equalizer Audio Plugin
 5 properties:
-    1) type of interface elements
-    2) number of adjustable frequency bands
-    3) number of adjustable gain knobs
-    4) amount of gain attenuation
-    5) types of selectable functions
+    1) type of interface elements (std::string)
+    2) number of adjustable frequency bands (int)
+    3) number of adjustable gain knobs (int)
+    4) amount of gain attenuation (float)
+    5) types of selectable functions (std::string)
 3 things it can do:
     1) choose audio frequency
     2) boost audio frequency
@@ -234,11 +234,11 @@ Thing 3) Equalizer Audio Plugin
 
 Thing 4) Stereo Widener Audio Plugin
 5 properties:
-    1) number of interface elements
-    2) color of interface elements
-    3) amount of memory required
-    4) font size of tool tips
-    5) location of interface elements within GUI
+    1) number of interface elements (int)
+    2) color of interface elements (std::string)
+    3) amount of memory required (float)
+    4) font size of tool tips (int)
+    5) location of interface elements within GUI (float)
 3 things it can do:
     1) capture audio signal
     2) display text descriptions
