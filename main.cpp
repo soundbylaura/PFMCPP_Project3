@@ -157,7 +157,7 @@ Thing: Car Wash
     5 properties:
         - number of vacuum cleaners
         - number of eco-friendly cleaning supplies
-        - the amount of water used per week.
+        - the amount of water used per week
         - amount of profit made per week
         - number of cars serviced per day
     3 things it can do:
@@ -196,53 +196,53 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1)
+Thing 1) Bicycle
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of gears
+    2) amount of air required in tires
+    3) type of handlebars
+    4) number of water bottle holders
+    5) number of times used per week
 3 things it can do:
-    1)
-    2)
-    3)
+    1) transport a person
+    2) roll down a hill
+    3) need repairs
 
-Thing 2)
+Thing 2) Recording Studio
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of microphones
+    2) number of clients
+    3) amount of food needed per week
+    4) cost of business insurance needed
+    5) number of employees
 3 things it can do:
-    1)
-    2)
-    3)
+    1) record audio
+    2) send invoices to clients
+    3) host events
 
-Thing 3)
+Thing 3) Equalizer Audio Plugin
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) type of interface elements
+    2) number of adjustable frequency bands
+    3) number of adjustable gain knobs
+    4) amount of gain attenuation
+    5) types of selectable functions
 3 things it can do:
-    1)
-    2)
-    3)
+    1) choose audio frequency
+    2) boost audio frequency
+    3) mute aduio signal
 
-Thing 4)
+Thing 4) Stereo Widener Audio Plugin
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) number of interface elements
+    2) color of interface elements
+    3) amount of memory required
+    4) font size of tool tips
+    5) location of interface elements within GUI
 3 things it can do:
-    1)
-    2)
-    3)
+    1) capture audio signal
+    2) display text descriptions
+    3) widen audio signal
 */
 
 /*
