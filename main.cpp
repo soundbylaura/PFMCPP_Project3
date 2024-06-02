@@ -339,15 +339,15 @@ Define an object that is made of 5 sub-objects.
 
 Thing 10) Equalizer Audio Plugin
 5 properties:
-    1) type of interface elements (std::string)
-    2) number of adjustable frequency bands (int)
-    3) number of adjustable gain knobs (int)
-    4) amount of gain attenuation (float)
-    5) types of selectable functions (std::string)
+    1) interface
+    2) audio input
+    3) audio output
+    4) signal processor
+    5) bypass
 3 things it can do:
-    1) choose audio frequency
-    2) boost audio frequency
-    3) mute aduio signal
+    1) display changes to frequency level
+    2) attenuate audio frequency level
+    3) bypass pugin functions
  */
 
  /*
@@ -367,7 +367,7 @@ Be sure to make the commit message meaningful.
 =================
 Part 1d - Step 1: Lesson
 =================
-You now know how to define a UDT that is composed of other UDT.
+You now know how to define a UDT that is composed of other UDTs.
 Now you will learn how to break down those sub-object UDTs into 
 their 5 properties and 3 actions.
 
