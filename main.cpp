@@ -528,17 +528,17 @@ Thing 8) Signal Processor
     2) convert raw audio level to decibels
     3) send audio
 
-Thing 9) Build Format
+Thing 9) DSP Engine
 5 properties:
-    1) AAX (std::string)
-    2) VST (std::string)
-    3) VST3 (std::string)
-    4) AU (std::string)
-    5) Standalone (std::string)
+    1) value of incoming gain (double)
+    2) duration of gain ramp (double)
+    3) amount of effect (float)
+    4) name of effect (std::string)
+    5) value of output level (float)
 3 things it can do:
-    1) function in Pro Tools
-    2) function in Logic
-    3) function in Reaper
+    1) create a chorus effect
+    2) modify gain level
+    3) disable output
 
 Thing 10) Equalizer Audio Plugin
 5 properties:
