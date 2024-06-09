@@ -478,6 +478,19 @@ struct RecordingStudio
     //number of employees (int)
     int employees = 8;
 
+    struct ControlRoom
+    {
+        bool isBooked = false;
+        float ratePerHour = 500.0f;
+        std::string consoleType = "Analog";
+        bool clientHasEngineer = false;
+        int hoursBooked = 8;
+
+        void bookRoom (bool isBooked = true, int numberOfClients = 5);
+        void prepareRoom (bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
+        int caclulateTotalFee (int numberOfActualHours = 12, float overtimeRate = 650.50f, int tapesUsed = 4);
+    };
+
     //3 things it can do:
     // record audio
     void recordAudio();
@@ -536,9 +549,23 @@ struct StereoWidenerAudioPlugin
     //location of interface elements within GUI (float)
     float knobsLocation = 0;
 
+    struct MixKnob
+    {
+        std::string label = "Mix";
+        int sliderHeight = 10; 
+        int sliderWidth = 2;
+        int ticksOnSlider = 50;
+        std::string sliderColor = "Black";
+
+        void getStateInformation (int sizeInBytes, float inputLevel);
+        void prepareToPlay (double sampleRate, int samplesPerBlock);
+        bool isBypassed (bool customBypassButton, bool nativeBypassButton);
+
+    };
+
     //3 things it can do:
     // capture audio signal
-    void caputreAudio();
+    void captureAudio();
 
     // display text descriptions
     char textInfo(); //return is displayed for user
