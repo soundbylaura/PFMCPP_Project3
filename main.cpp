@@ -433,182 +433,182 @@ MOVE THEM to the space below this block comment and put them in numerical order
 
 /*
 Thing 1) Bicycle
-5 properties:
-    1) number of gears (int)
-    2) amount of air required in tires in PSI (float)
-    3) type of handlebars (std::string)
-    4) number of water bottle holders (int)
-    5) number of times used per week (int)
-3 things it can do:
-    1) transport a person
-    2) roll down a hill
-    3) need repairs
+
 */
 struct Bicycle
 {
-
+// 5 properties:
+//     1) number of gears (int)
+//     2) amount of air required in tires in PSI (float)
+//     3) type of handlebars (std::string)
+//     4) number of water bottle holders (int)
+//     5) number of times used per week (int)
+// 3 things it can do:
+//     1) transport a person
+//     2) roll down a hill
+//     3) need repairs
 };
 /*
 
 Thing 2) Recording Studio
-5 properties:
-    1) number of microphones (int)
-    2) number of clients (int)
-    3) cost of food needed per week (float)
-    4) cost of business insurance (float)
-    5) number of employees (int)
-3 things it can do:
-    1) record audio
-    2) send invoices to clients
-    3) host events
+
 */
 struct RecordingStudio
 {
-
+// 5 properties:
+//     1) number of microphones (int)
+//     2) number of clients (int)
+//     3) cost of food needed per week (float)
+//     4) cost of business insurance (float)
+//     5) number of employees (int)
+// 3 things it can do:
+//     1) record audio
+//     2) send invoices to clients
+//     3) host events
 };
 /*
 
 Thing 3) Audio Interface
-5 properties:
-    1) number of inputs (int)
-    2) types of inputs (std::string)
-    3) types of enclosure material (std::string)
-    4) types of outputs (std::string)
-    5) locations of inputs (std::string)
-3 things it can do:
-    1) receive audio signals
-    2) display signal levels
-    3) output audio and MIDI signals
+
 */
 struct AudioInterface
 {
-
+// 5 properties:
+//     1) number of inputs (int)
+//     2) types of inputs (std::string)
+//     3) types of enclosure material (std::string)
+//     4) types of outputs (std::string)
+//     5) locations of inputs (std::string)
+// 3 things it can do:
+//     1) receive audio signals
+//     2) display signal levels
+//     3) output audio and MIDI signals
 };
 /*
 
 Thing 4) Stereo Widener Audio Plugin
-5 properties:
-    1) number of interface elements (int)
-    2) color of interface elements (std::string)
-    3) amount of memory required (float)
-    4) font size of tool tips (int)
-    5) location of interface elements within GUI (float)
-3 things it can do:
-    1) capture audio signal
-    2) display text descriptions
-    3) widen audio signal
+
 */
 struct StereoWidenerAudioPlugin
 {
-
+// 5 properties:
+//     1) number of interface elements (int)
+//     2) color of interface elements (std::string)
+//     3) amount of memory required (float)
+//     4) font size of tool tips (int)
+//     5) location of interface elements within GUI (float)
+// 3 things it can do:
+//     1) capture audio signal
+//     2) display text descriptions
+//     3) widen audio signal
 };
 /*
 
 Thing 5) Graphical User Interface
-5 properties:
-    1) width in cm (int)
-    2) height in cm (int)
-    3) number of frequency selector dials (int)
-    4) names of frequency selector dials (std::string)
-    5) color of background (std::string)
-3 things it can do:
-    1) display input level
-    2) display attenuation level(s) of frequency band(s)
-    3) allow user to modify parameters
+
 */
 struct GraphicalUserInterface
 {
-
+// 5 properties:
+//     1) width in cm (int)
+//     2) height in cm (int)
+//     3) number of frequency selector dials (int)
+//     4) names of frequency selector dials (std::string)
+//     5) color of background (std::string)
+// 3 things it can do:
+//     1) display input level
+//     2) display attenuation level(s) of frequency band(s)
+//     3) allow user to modify parameters
 };
 /*
 
 Thing 6) License
-5 properties:
-    1) text (std::string)
-    2) font size (int)
-    3) format (std::string)
-    4) text color (std::string)
-    5) executed (bool)
-3 things it can do:
-    1) provide information
-    2) link to manufacturer website
-    3) not be copied
+
 */
 struct License
 {
-
+// 5 properties:
+//     1) text (std::string)
+//     2) font size (int)
+//     3) format (std::string)
+//     4) text color (std::string)
+//     5) executed (bool)
+// 3 things it can do:
+//     1) provide information
+//     2) link to manufacturer website
+//     3) not be copied
 };
 /*
 
 Thing 7) Manufacturer
-5 properties:
-    1) name (std::string)
-    2) location (std::string)
-    3) number of employees (int)
-    4) amount of income per year (float)
-    5) cost of office equipment (float)
-3 things it can do:
-    1) create plugins
-    2) set authorization methods
-    3) sign legal agreements
+
 */
 struct Manufacturer
 {
-
+// 5 properties:
+//     1) name (std::string)
+//     2) location (std::string)
+//     3) number of employees (int)
+//     4) amount of income per year (float)
+//     5) cost of office equipment (float)
+// 3 things it can do:
+//     1) create plugins
+//     2) set authorization methods
+//     3) sign legal agreements
 };
 /*
 
 Thing 8) Signal Processor
-5 properties:
-    1) samples (float)
-    2) channels (int)
-    3) type (std::string)
-    4) buffer (float)
-    5) program (int)
-3 things it can do:
-    1) receive audio
-    2) convert raw audio level to decibels
-    3) send audio
-*/
-struct SiganlProcessor
-{
 
+*/
+struct SignalProcessor
+{
+// 5 properties:
+//     1) samples (float)
+//     2) channels (int)
+//     3) type (std::string)
+//     4) buffer (float)
+//     5) program (int)
+// 3 things it can do:
+//     1) receive audio
+//     2) convert raw audio level to decibels
+//     3) send audio
 };
 /*
 
 Thing 9) DSP Engine
-5 properties:
-    1) value of incoming gain (double)
-    2) duration of gain ramp (double)
-    3) amount of effect (float)
-    4) name of effect (std::string)
-    5) value of output level (float)
-3 things it can do:
-    1) create a chorus effect
-    2) modify gain level
-    3) disable output
+
 */
 struct DSPEngine
 {
-
+// 5 properties:
+//     1) value of incoming gain (double)
+//     2) duration of gain ramp (double)
+//     3) amount of effect (float)
+//     4) name of effect (std::string)
+//     5) value of output level (float)
+// 3 things it can do:
+//     1) create a chorus effect
+//     2) modify gain level
+//     3) disable output
 };
 /*
 
 Thing 10) Equalizer Audio Plugin
-5 properties:
-        1) Graphical User Interface
-        2) license
-        3) manufacturer
-        4) signal processor
-        5) build format
-3 things it can do:
-        1) display changes to frequency level
-        2) attenuate audio frequency level
-        3) accomodate multiple hosts
+
 */
 struct EqualizerAudioPlugin
 {
-
+// 5 properties:
+//         1) Graphical User Interface
+//         2) license
+//         3) manufacturer
+//         4) signal processor
+//         5) DSP engine
+// 3 things it can do:
+//         1) display changes to frequency level
+//         2) attenuate audio frequency level
+//         3) accomodate multiple hosts
 };
 /*
 */
