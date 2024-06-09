@@ -443,6 +443,12 @@ Thing 1) Bicycle
     1) transport a person
     2) roll down a hill
     3) need repairs
+*/
+struct Bicycle
+{
+
+};
+/*
 
 Thing 2) Recording Studio
 5 properties:
@@ -455,6 +461,12 @@ Thing 2) Recording Studio
     1) record audio
     2) send invoices to clients
     3) host events
+*/
+struct RecordingStudio
+{
+
+};
+/*
 
 Thing 3) Audio Interface
 5 properties:
@@ -467,6 +479,12 @@ Thing 3) Audio Interface
     1) receive audio signals
     2) display signal levels
     3) output audio and MIDI signals
+*/
+struct AudioInterface
+{
+
+};
+/*
 
 Thing 4) Stereo Widener Audio Plugin
 5 properties:
@@ -479,6 +497,12 @@ Thing 4) Stereo Widener Audio Plugin
     1) capture audio signal
     2) display text descriptions
     3) widen audio signal
+*/
+struct StereoWidenerAudioPlugin
+{
+
+};
+/*
 
 Thing 5) Graphical User Interface
 5 properties:
@@ -491,6 +515,12 @@ Thing 5) Graphical User Interface
     1) display input level
     2) display attenuation level(s) of frequency band(s)
     3) allow user to modify parameters
+*/
+struct GraphicalUserInterface
+{
+
+};
+/*
 
 Thing 6) License
 5 properties:
@@ -503,6 +533,12 @@ Thing 6) License
     1) provide information
     2) link to manufacturer website
     3) not be copied
+*/
+struct License
+{
+
+};
+/*
 
 Thing 7) Manufacturer
 5 properties:
@@ -515,6 +551,12 @@ Thing 7) Manufacturer
     1) create plugins
     2) set authorization methods
     3) sign legal agreements
+*/
+struct Manufacturer
+{
+
+};
+/*
 
 Thing 8) Signal Processor
 5 properties:
@@ -527,6 +569,12 @@ Thing 8) Signal Processor
     1) receive audio
     2) convert raw audio level to decibels
     3) send audio
+*/
+struct SiganlProcessor
+{
+
+};
+/*
 
 Thing 9) DSP Engine
 5 properties:
@@ -539,6 +587,12 @@ Thing 9) DSP Engine
     1) create a chorus effect
     2) modify gain level
     3) disable output
+*/
+struct DSPEngine
+{
+
+};
+/*
 
 Thing 10) Equalizer Audio Plugin
 5 properties:
@@ -551,6 +605,12 @@ Thing 10) Equalizer Audio Plugin
         1) display changes to frequency level
         2) attenuate audio frequency level
         3) accomodate multiple hosts
+*/
+struct EqualizerAudioPlugin
+{
+
+};
+/*
 */
     
 /*
