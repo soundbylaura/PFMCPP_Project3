@@ -437,16 +437,21 @@ Thing 1) Bicycle
 */
 struct Bicycle
 {
-// 5 properties:
-//     1) number of gears (int)
-//     2) amount of air required in tires in PSI (float)
-//     3) type of handlebars (std::string)
-//     4) number of water bottle holders (int)
-//     5) number of times used per week (int)
-// 3 things it can do:
-//     1) transport a person
-//     2) roll down a hill
-//     3) need repairs
+
+    //number of gears (int)
+    int numGears = 18;
+    //amount of air required in tires in PSI (float)
+    float tireAirPressure = 70.0f;
+    //type of handlebars (std::string)
+    std::string handlebar = ("Drop" "Flat");
+    //number of water bottle holders (int)
+    int bottleHolders = 3;
+    //number of times used per week (int)
+    int rides = 5;
+    //3 things it can do:
+    // 1) transport a person
+    // 2) roll down a hill
+    // 3) need repairs
 };
 /*
 
@@ -455,16 +460,21 @@ Thing 2) Recording Studio
 */
 struct RecordingStudio
 {
-// 5 properties:
-//     1) number of microphones (int)
-//     2) number of clients (int)
-//     3) cost of food needed per week (float)
-//     4) cost of business insurance (float)
-//     5) number of employees (int)
-// 3 things it can do:
-//     1) record audio
-//     2) send invoices to clients
-//     3) host events
+
+    //number of microphones (int)
+    int microphones = 28;
+    //number of clients (int)
+    int numOfClients = 33;
+    //cost of food needed per week (float)
+    float expenseCatering = 300.0f;
+    //cost of business insurance (float)
+    float expenseInsurance = 1100.0f;
+    //number of employees (int)
+    int employees = 8;
+    //3 things it can do:
+    // 1) record audio
+    // 2) send invoices to clients
+    // 3) host events
 };
 /*
 
@@ -473,16 +483,21 @@ Thing 3) Audio Interface
 */
 struct AudioInterface
 {
-// 5 properties:
-//     1) number of inputs (int)
-//     2) types of inputs (std::string)
-//     3) types of enclosure material (std::string)
-//     4) types of outputs (std::string)
-//     5) locations of inputs (std::string)
-// 3 things it can do:
-//     1) receive audio signals
-//     2) display signal levels
-//     3) output audio and MIDI signals
+
+    //number of inputs (int)
+    int audioInputs = 16;
+    //types of inputs (std::string)
+    std::string inputType = ("XLR" "TRS" "MIDI" "Optical");
+    //types of enclosure material (std::string)
+    std::string enclosureMaterial = ("Metal" "Plastic");
+    //types of outputs (std::string)
+    std::string outputType = ("XLR" "TRS" "MIDI" "Optical" "RCA");
+    //locations of inputs (std::string)
+    std::string inputsLocation = ("Front" "Back");
+    //3 things it can do:
+    // 1) receive audio signals
+    // 2) display signal levels
+    // 3) output audio and MIDI signals
 };
 /*
 
@@ -491,16 +506,21 @@ Thing 4) Stereo Widener Audio Plugin
 */
 struct StereoWidenerAudioPlugin
 {
-// 5 properties:
-//     1) number of interface elements (int)
-//     2) color of interface elements (std::string)
-//     3) amount of memory required (float)
-//     4) font size of tool tips (int)
-//     5) location of interface elements within GUI (float)
-// 3 things it can do:
-//     1) capture audio signal
-//     2) display text descriptions
-//     3) widen audio signal
+
+    //number of GUI elements (int)
+    int GUIElements = 2;
+    //color of interface elements (std::string)
+    std::string knobsColors = ("Black" "Gray" "Red");
+    //amount of memory required (float)
+    float memoryAllocated = 64.0f;
+    //font size of tool tips (int)
+    int fontSizeToolTips = 32;
+    //location of interface elements within GUI (float)
+    float knobsLocation = 0;
+    //3 things it can do:
+    // 1) capture audio signal
+    // 2) display text descriptions
+    // 3) widen audio signal
 };
 /*
 
@@ -509,16 +529,21 @@ Thing 5) Graphical User Interface
 */
 struct GraphicalUserInterface
 {
-// 5 properties:
-//     1) width in cm (int)
-//     2) height in cm (int)
-//     3) number of frequency selector dials (int)
-//     4) names of frequency selector dials (std::string)
-//     5) color of background (std::string)
-// 3 things it can do:
-//     1) display input level
-//     2) display attenuation level(s) of frequency band(s)
-//     3) allow user to modify parameters
+
+    //width in cm (int)
+    int GUIWidth = 10;
+    //height in cm (int)
+    int GUIHeight = 10;
+    //number of frequency selector dials (int)
+    int freqDialsQuantity = 3;
+    //names of frequency selector dials (std::string)
+    std::string freqDialsNames = ("Freq" "Gain" "Q");
+    //color of background (std::string)
+    std::string backgroundColor = "Purple";
+    //3 things it can do:
+    // display input level
+    // 2) display attenuation level(s) of frequency band(s)
+    // 3) allow user to modify parameters
 };
 /*
 
@@ -527,34 +552,44 @@ Thing 6) License
 */
 struct License
 {
-// 5 properties:
-//     1) text (std::string)
-//     2) font size (int)
-//     3) format (std::string)
-//     4) text color (std::string)
-//     5) executed (bool)
-// 3 things it can do:
-//     1) provide information
-//     2) link to manufacturer website
-//     3) not be copied
+
+    //text (std::string)
+    std::string bodyText = "You must be this tall to ride this ride.";
+    //font size (int)
+    int bodyTextFontSize = 18;
+    //format (std::string)
+    std::string fileFormat = "PDF";
+    //text color (std::string)
+    std::string bodyTextColor = "black";
+    //executed (bool)
+    bool isExecuted = true;
+    //3 things it can do:
+    // 1) provide information
+    // 2) link to manufacturer website
+    // 3) not be copied
 };
 /*
 
-Thing 7) Manufacturer
+Thing 7) Company
 
 */
-struct Manufacturer
+struct Company
 {
-// 5 properties:
-//     1) name (std::string)
-//     2) location (std::string)
-//     3) number of employees (int)
-//     4) amount of income per year (float)
-//     5) cost of office equipment (float)
-// 3 things it can do:
-//     1) create plugins
-//     2) set authorization methods
-//     3) sign legal agreements
+
+    //name (std::string)
+    std::string companyName = "SBL Plugins";
+    //location (std::string)
+    std::string companyLocation = "Atlanta";
+    //number of employees (int)
+    int companyEmployees = 1;
+    //amount of income per year (float)
+    float companyIncome = 0.0f;
+    //cost of office equipment (float)
+    float equipmentCost = 200.25f;
+    //3 things it can do:
+    // 1) create plugins
+    // 2) set authorization methods
+    // 3) sign legal agreements
 };
 /*
 
@@ -563,16 +598,21 @@ Thing 8) Signal Processor
 */
 struct SignalProcessor
 {
-// 5 properties:
-//     1) samples (float)
-//     2) channels (int)
-//     3) type (std::string)
-//     4) buffer (float)
-//     5) program (int)
-// 3 things it can do:
-//     1) receive audio
-//     2) convert raw audio level to decibels
-//     3) send audio
+
+    //samples (float)
+    float numSamples = 256.0f;
+    //channels (int)
+    int numChannels = 2;
+    //type (std::string)
+    std::string type = "Unknown";
+    //buffer (float)
+    float numBuffer = 2.2f;
+    //program (int)
+    int program = 4;
+    //3 things it can do:
+    // 1) receive audio
+    // 2) convert raw audio level to decibels
+    // 3) send audio
 };
 /*
 
@@ -581,12 +621,17 @@ Thing 9) DSP Engine
 */
 struct DSPEngine
 {
-// 5 properties:
-//     1) value of incoming gain (double)
-//     2) duration of gain ramp (double)
-//     3) amount of effect (float)
-//     4) name of effect (std::string)
-//     5) value of output level (float)
+
+    //value of incoming gain (double)
+    double gainInputLevel = 0;
+    //duration of gain ramp (double)
+    double gainRampDuration = 3482;
+    //amount of effect (float)
+    float wetLevel = 33.1f;
+    //name of effect (std::string)
+    std::string effect = ("Chorus" "Phase" "Flange");
+    //value of output level (float)
+    float gainOutputLevel = -6.4f;
 // 3 things it can do:
 //     1) create a chorus effect
 //     2) modify gain level
@@ -599,12 +644,17 @@ Thing 10) Equalizer Audio Plugin
 */
 struct EqualizerAudioPlugin
 {
-// 5 properties:
-//         1) Graphical User Interface
-//         2) license
-//         3) manufacturer
-//         4) signal processor
-//         5) DSP engine
+
+    //Graphical User Interface
+    GraphicalUserInterface GUI;
+    //license
+    License license;
+    //company
+    Company company;
+    //signal processor
+    SignalProcessor signalProcessor;
+    //DSP engine
+    DSPEngine DSP_Engine;
 // 3 things it can do:
 //         1) display changes to frequency level
 //         2) attenuate audio frequency level
