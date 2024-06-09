@@ -491,6 +491,14 @@ struct RecordingStudio
         int caclulateTotalFee (int numberOfActualHours = 12, float overtimeRate = 650.50f, int tapesUsed = 4);
     };
 
+    void beginRecordingSession (ControlRoom controlRoomA);
+
+    void startRateClock (bool hasGroupon = true);
+    
+    void closeRoom (ControlRoom controlRoomA, bool equipmentOff = true);
+
+    int billClient (ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
+
     //3 things it can do:
     // record audio
     void recordAudio();
@@ -562,6 +570,10 @@ struct StereoWidenerAudioPlugin
         bool isBypassed (bool customBypassButton, bool nativeBypassButton);
 
     };
+
+    void increaseWetness (MixKnob increase);
+    void decreaseWetness (MixKnob decrease);
+    void smartMute (int audioInput = 1, float audioOutput = 1.1f);
 
     //3 things it can do:
     // capture audio signal
