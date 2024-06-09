@@ -448,10 +448,16 @@ struct Bicycle
     int bottleHolders = 3;
     //number of times used per week (int)
     int rides = 5;
+
     //3 things it can do:
-    // 1) transport a person
-    // 2) roll down a hill
-    // 3) need repairs
+    // transport a person
+    void transportPerson();
+
+    // roll down a hill
+    void rollDownhill();
+
+    // need repairs
+    void repairs();
 };
 /*
 
@@ -471,10 +477,16 @@ struct RecordingStudio
     float expenseInsurance = 1100.0f;
     //number of employees (int)
     int employees = 8;
+
     //3 things it can do:
-    // 1) record audio
-    // 2) send invoices to clients
-    // 3) host events
+    // record audio
+    void recordAudio();
+
+    // send invoices to clients
+    void sendInvoice();
+
+    // host events
+    void hostEvent();
 };
 /*
 
@@ -494,10 +506,16 @@ struct AudioInterface
     std::string outputType = ("XLR" "TRS" "MIDI" "Optical" "RCA");
     //locations of inputs (std::string)
     std::string inputsLocation = ("Front" "Back");
+
     //3 things it can do:
-    // 1) receive audio signals
-    // 2) display signal levels
-    // 3) output audio and MIDI signals
+    // receive audio signals
+    void receiveAudio();
+
+    // display signal levels
+    float displayLevels(); //return is displayed for user
+
+    // output audio signals
+    void outputAudio();
 };
 /*
 
@@ -517,10 +535,16 @@ struct StereoWidenerAudioPlugin
     int fontSizeToolTips = 32;
     //location of interface elements within GUI (float)
     float knobsLocation = 0;
+
     //3 things it can do:
-    // 1) capture audio signal
-    // 2) display text descriptions
-    // 3) widen audio signal
+    // capture audio signal
+    void caputreAudio();
+
+    // display text descriptions
+    char textInfo(); //return is displayed for user
+
+    // widen audio signal
+    float widenSignal(); //return is related to function parameter
 };
 /*
 
@@ -540,10 +564,16 @@ struct GraphicalUserInterface
     std::string freqDialsNames = ("Freq" "Gain" "Q");
     //color of background (std::string)
     std::string backgroundColor = "Purple";
+
     //3 things it can do:
     // display input level
-    // 2) display attenuation level(s) of frequency band(s)
-    // 3) allow user to modify parameters
+    float displayInputLevel(); //return is displayed for user
+
+    // display attenuation level(s) of frequency band(s)
+    float displayAttenuation(); //return is displayed for user
+
+    // allow user to modify parameters
+    float parameterMod(); //return is related to function parameter
 };
 /*
 
@@ -563,10 +593,16 @@ struct License
     std::string bodyTextColor = "black";
     //executed (bool)
     bool isExecuted = true;
+
     //3 things it can do:
-    // 1) provide information
-    // 2) link to manufacturer website
-    // 3) not be copied
+    // provide information
+    char displayTextBody(); //return is displayed for user
+
+    // link to manufacturer website
+    char website(); //return is actionable by user
+
+    // not be copied
+    void copyProtection();
 };
 /*
 
@@ -586,10 +622,16 @@ struct Company
     float companyIncome = 0.0f;
     //cost of office equipment (float)
     float equipmentCost = 200.25f;
+
     //3 things it can do:
-    // 1) create plugins
-    // 2) set authorization methods
-    // 3) sign legal agreements
+    // create plugins
+    int createPlugin(); //return is related to function parameter
+
+    // set authorization methods
+    void authEnable();
+
+    // sign legal agreements
+    void signContract();
 };
 /*
 
@@ -609,10 +651,16 @@ struct SignalProcessor
     float numBuffer = 2.2f;
     //program (int)
     int program = 4;
+
     //3 things it can do:
-    // 1) receive audio
-    // 2) convert raw audio level to decibels
-    // 3) send audio
+    // receive audio
+    void receiveAudio();
+
+    // convert raw audio level to decibels
+    float convertToDecibels(); //return is related to function parameter
+
+    // send audio
+    void sendAudio();
 };
 /*
 
@@ -632,10 +680,16 @@ struct DSPEngine
     std::string effect = ("Chorus" "Phase" "Flange");
     //value of output level (float)
     float gainOutputLevel = -6.4f;
-// 3 things it can do:
-//     1) create a chorus effect
-//     2) modify gain level
-//     3) disable output
+
+    // 3 things it can do:
+    // create a chorus effect
+    void createChorus();
+
+    // modify gain level
+    float modifyGain(); //return is related to function parameter
+
+    // disable output
+    bool outputEnabled(); //return is related to function parameter
 };
 /*
 
@@ -655,10 +709,16 @@ struct EqualizerAudioPlugin
     SignalProcessor signalProcessor;
     //DSP engine
     DSPEngine DSP_Engine;
-// 3 things it can do:
-//         1) display changes to frequency level
-//         2) attenuate audio frequency level
-//         3) accomodate multiple hosts
+
+    // 3 things it can do:
+    // display changes to frequency level
+    float displayFreqLevelChange(); //return is displayed for user
+
+    // attenuate audio frequency level
+    float freqLevelChange(); //return is related to function parameter
+    
+    // accomodate multiple hosts
+    void buildType();
 };
 /*
 */
