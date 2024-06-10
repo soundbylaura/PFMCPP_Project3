@@ -83,51 +83,51 @@ Main Object: Car Interior
         Name 4 nouns you'll find on the [Sub Object]
             1) paddle shifters
             2) 'cruise control' controls
-            3) 
-            4) 
+            3) car horn
+            4) infotainment system controls
         Name 2 actions that the [Sub Object] can do:
             1) adjust cruise control settings.
-            2)
+            2) sound horn
         
     Sub Object: Instrument Cluster
         Name 4 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
-            4)
+            1) engine thermometer
+            2) speedometer
+            3) gear indicator
+            4) tachometer
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) display car speed
+            2) display engine rpm
+            3) display exterior temperature
     
     Sub Object: Environment Controls
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) on/off button
+            2) temperature control
+            3) fan speed control
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) be on/off
+            2) adjust temperature
+            3) adjust fan speed
 
     Sub Object: Infotainment System
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) on/off button
+            2) volume knob
+            3) skip track button
         Name 3 actions that the [Sub Object] can do:
-            1)
-            2)
-            3)
+            1) play radio
+            2) play CD
+            3) be on/off
 
     Sub Object: Seat 
         Name 3 nouns you'll find on the [Sub Object]
-            1)
-            2)
-            3)
+            1) fabric
+            2) seat tilt lever
+            3) seat belt recepticle
         Name 2 actions that the [Sub Object] can do:
-            1)
-            2)
+            1) be leather
+            2) recline
 */
 
 /*
@@ -157,7 +157,7 @@ Thing: Car Wash
     5 properties:
         - number of vacuum cleaners
         - number of eco-friendly cleaning supplies
-        - the amount of water used per week.
+        - the amount of water used per week
         - amount of profit made per week
         - number of cars serviced per day
     3 things it can do:
@@ -196,53 +196,7 @@ Part 1b - Step 2: Assignment
         c) pick properties that can eventually be represented with 
         'int float double bool char std::string'.
 
-Thing 1)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 
-Thing 2)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 3)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 4)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 */
 
 /*
@@ -337,17 +291,7 @@ Define an object that is made of 5 sub-objects.
     These 5 sub-objects will not be defined using Primitives, but instead will be their own UDTs 
     you'll define these 5 sub-objects in Part 1d.
 
-Thing 10)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
+
  */
 
  /*
@@ -367,7 +311,7 @@ Be sure to make the commit message meaningful.
 =================
 Part 1d - Step 1: Lesson
 =================
-You now know how to define a UDT that is composed of other UDT.
+You now know how to define a UDT that is composed of other UDTs.
 Now you will learn how to break down those sub-object UDTs into 
 their 5 properties and 3 actions.
 
@@ -434,65 +378,7 @@ example:
     You will need to provide 5 properties and 3 member functions of that Engine object in plain English.
     Remember to pick properties that can be represented with 'int float double bool char std::string'.
 
-Thing 5)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
 
-Thing 6)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 7)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 8)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
-
-Thing 9)
-5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
-3 things it can do:
-    1)
-    2)
-    3)
  */
 
 /*
@@ -545,13 +431,14 @@ MOVE THEM to the space below this block comment and put them in numerical order
     simply CUT and PASTE them in the space provided below:
 */
 
+/*
+Thing 1) Bicycle
 
+*/
 
-
-
-
-
-
+/*
+*/
+    
 /*
 =================
 Part 1d - Step 7: Commit
@@ -990,7 +877,332 @@ Fix anything that needs fixing
 
 You should see "good to go" in the program output
 */
+struct Bicycle
+{
 
+    //number of gears (int)
+    int numGears = 18;
+    //amount of air required in tires in PSI (float)
+    float tireAirPressure = 70.0f;
+    //type of handlebars (std::string)
+    std::string handlebar = ("Drop" "Flat");
+    //number of water bottle holders (int)
+    int bottleHolders = 3;
+    //number of times used per week (int)
+    int rides = 5;
+
+    //3 things it can do:
+    // transport a person
+    void transportPerson();
+
+    // roll down a hill
+    void rollDownhill();
+
+    // need repairs
+    void repairs();
+};
+/*
+
+Thing 2) Recording Studio
+
+*/
+struct RecordingStudio
+{
+
+    //number of microphones (int)
+    int microphones = 28;
+    //number of clients (int)
+    int numOfClients = 33;
+    //cost of food needed per week (float)
+    float expenseCatering = 300.0f;
+    //cost of business insurance (float)
+    float expenseInsurance = 1100.0f;
+    //number of employees (int)
+    int employees = 8;
+
+    struct ControlRoom
+    {
+        bool isBooked = false;
+        float ratePerHour = 500.0f;
+        std::string consoleType = "Analog";
+        bool clientHasEngineer = false;
+        int hoursBooked = 8;
+
+        void bookRoom (bool isBooked = true, int numberOfClients = 5);
+        void prepareRoom (bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
+        int caclulateTotalFee (int numberOfActualHours = 12, float overtimeRate = 650.50f, int tapesUsed = 4);
+    };
+
+    void beginRecordingSession (ControlRoom controlRoomA);
+
+    void startRateClock (bool hasGroupon = true);
+
+    void closeRoom (ControlRoom controlRoomA, bool equipmentOff = true);
+
+    int billClient (ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
+
+    //3 things it can do:
+    // record audio
+    void recordAudio();
+
+    // send invoices to clients
+    void sendInvoice();
+
+    // host events
+    void hostEvent();
+};
+/*
+
+Thing 3) Audio Interface
+
+*/
+struct AudioInterface
+{
+
+    //number of inputs (int)
+    int audioInputs = 16;
+    //types of inputs (std::string)
+    std::string inputType = ("XLR" "TRS" "MIDI" "Optical");
+    //types of enclosure material (std::string)
+    std::string enclosureMaterial = ("Metal" "Plastic");
+    //types of outputs (std::string)
+    std::string outputType = ("XLR" "TRS" "MIDI" "Optical" "RCA");
+    //locations of inputs (std::string)
+    std::string inputsLocation = ("Front" "Back");
+
+    //3 things it can do:
+    // receive audio signals
+    void receiveAudio();
+
+    // display signal levels
+    float displayLevels(); //return is displayed for user
+
+    // output audio signals
+    void outputAudio();
+};
+/*
+
+Thing 4) Stereo Widener Audio Plugin
+
+*/
+struct StereoWidenerAudioPlugin
+{
+
+    //number of GUI elements (int)
+    int GUIElements = 2;
+    //color of interface elements (std::string)
+    std::string knobsColors = ("Black" "Gray" "Red");
+    //amount of memory required (float)
+    float memoryAllocated = 64.0f;
+    //font size of tool tips (int)
+    int fontSizeToolTips = 32;
+    //location of interface elements within GUI (float)
+    float knobsLocation = 0;
+
+    struct MixKnob
+    {
+        std::string label = "Mix";
+        int sliderHeight = 10; 
+        int sliderWidth = 2;
+        int ticksOnSlider = 50;
+        std::string sliderColor = "Black";
+
+        void getStateInformation (int sizeInBytes, float inputLevel);
+        void prepareToPlay (double sampleRate, int samplesPerBlock);
+        bool isBypassed (bool customBypassButton, bool nativeBypassButton);
+
+    };
+
+    void increaseWetness (MixKnob increase);
+    void decreaseWetness (MixKnob decrease);
+    void smartMute (int audioInput = 1, float audioOutput = 1.1f);
+
+    //3 things it can do:
+    // capture audio signal
+    void captureAudio();
+
+    // display text descriptions
+    char textInfo(); //return is displayed for user
+
+    // widen audio signal
+    float widenSignal(); //return is related to function parameter
+};
+/*
+
+Thing 5) Graphical User Interface
+
+*/
+struct GraphicalUserInterface
+{
+
+    //width in cm (int)
+    int GUIWidth = 10;
+    //height in cm (int)
+    int GUIHeight = 10;
+    //number of frequency selector dials (int)
+    int freqDialsQuantity = 3;
+    //names of frequency selector dials (std::string)
+    std::string freqDialsNames = ("Freq" "Gain" "Q");
+    //color of background (std::string)
+    std::string backgroundColor = "Purple";
+
+    //3 things it can do:
+    // display input level
+    float displayInputLevel(); //return is displayed for user
+
+    // display attenuation level(s) of frequency band(s)
+    float displayAttenuation(); //return is displayed for user
+
+    // allow user to modify parameters
+    float parameterMod(); //return is related to function parameter
+};
+/*
+
+Thing 6) License
+
+*/
+struct License
+{
+
+    //text (std::string)
+    std::string bodyText = "You must be this tall to ride this ride.";
+    //font size (int)
+    int bodyTextFontSize = 18;
+    //format (std::string)
+    std::string fileFormat = "PDF";
+    //text color (std::string)
+    std::string bodyTextColor = "black";
+    //executed (bool)
+    bool isExecuted = true;
+
+    //3 things it can do:
+    // provide information
+    char displayTextBody(); //return is displayed for user
+
+    // link to manufacturer website
+    char website(); //return is actionable by user
+
+    // not be copied
+    void copyProtection();
+};
+/*
+
+Thing 7) Company
+
+*/
+struct Company
+{
+
+    //name (std::string)
+    std::string companyName = "SBL Plugins";
+    //location (std::string)
+    std::string companyLocation = "Atlanta";
+    //number of employees (int)
+    int companyEmployees = 1;
+    //amount of income per year (float)
+    float companyIncome = 0.0f;
+    //cost of office equipment (float)
+    float equipmentCost = 200.25f;
+
+    //3 things it can do:
+    // create plugins
+    int createPlugin(); //return is related to function parameter
+
+    // set authorization methods
+    void authEnable();
+
+    // sign legal agreements
+    void signContract();
+};
+/*
+
+Thing 8) Signal Processor
+
+*/
+struct SignalProcessor
+{
+
+    //samples (float)
+    float numSamples = 256.0f;
+    //channels (int)
+    int numChannels = 2;
+    //type (std::string)
+    std::string type = "Unknown";
+    //buffer (float)
+    float numBuffer = 2.2f;
+    //program (int)
+    int program = 4;
+
+    //3 things it can do:
+    // receive audio
+    void receiveAudio();
+
+    // convert raw audio level to decibels
+    float convertToDecibels(); //return is related to function parameter
+
+    // send audio
+    void sendAudio();
+};
+/*
+
+Thing 9) DSP Engine
+
+*/
+struct DSPEngine
+{
+
+    //value of incoming gain (double)
+    double gainInputLevel = 0;
+    //duration of gain ramp (double)
+    double gainRampDuration = 3482;
+    //amount of effect (float)
+    float wetLevel = 33.1f;
+    //name of effect (std::string)
+    std::string effect = ("Chorus" "Phase" "Flange");
+    //value of output level (float)
+    float gainOutputLevel = -6.4f;
+
+    // 3 things it can do:
+    // create a chorus effect
+    void createChorus();
+
+    // modify gain level
+    float modifyGain(); //return is related to function parameter
+
+    // disable output
+    bool outputEnabled(); //return is related to function parameter
+};
+/*
+
+Thing 10) Equalizer Audio Plugin
+
+*/
+struct EqualizerAudioPlugin
+{
+
+    //Graphical User Interface
+    GraphicalUserInterface GUI;
+    //license
+    License license;
+    //company
+    Company company;
+    //signal processor
+    SignalProcessor signalProcessor;
+    //DSP engine
+    DSPEngine DSP_Engine;
+
+    // 3 things it can do:
+    // display changes to frequency level
+    float displayFreqLevelChange(); //return is displayed for user
+
+    // attenuate audio frequency level
+    float freqLevelChange(); //return is related to function parameter
+
+    // accomodate multiple hosts
+    void buildType();
+};
+
+  
 /*
 =================
 Part 1e - Step 18: Commit
@@ -1004,7 +1216,7 @@ Be sure to make the commit message meaningful.
 Part 1e - Step 19: Request a review
 =================
 */
-} //end namespace Part1E_Instructions
+} // end namespace Part1E_Instructions
 
 /*
 paste your code below
