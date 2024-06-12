@@ -17,7 +17,7 @@ Thing: Car Wash
     5 properties:
         - number of vacuum cleaners
         - number of eco-friendly cleaning supplies
-        - stores the amount of water used per week
+        - stores the amount of water used per week.
         - stores amount of profit made per week
         - number of cars serviced per day
     3 things it can do:
