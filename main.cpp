@@ -134,7 +134,7 @@ void Person::run( int howFast, bool startWithLeftFoot)
     }
     else
      {
-        void (distanceTraveled -= howFast);//illogical but didn't want to copy over from video, makes code work   
+        void (distanceTraveled -= howFast);//illogical but didn't want to copy over from video, makes code work.
     }
 }
  /*
