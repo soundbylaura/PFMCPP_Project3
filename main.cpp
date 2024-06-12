@@ -173,6 +173,7 @@ void Bicycle::transportPerson(){}
 void Bicycle::rollDownhill(){}
 void Bicycle::repairs(){}
 
+
 struct RecordingStudio
 {
     int microphones = 28;
@@ -203,9 +204,47 @@ struct RecordingStudio
     void sendInvoice();
     void hostEvent();
 };
-void RecordingStudio::ControlRoom::bookRoom (bool isBooked, int numberOfClients){}
-void RecordingStudio::ControlRoom:: prepareRoom(bool powerOn, bool roomCleaned, int numberOfAssistants, float rateForAssistant){}
-void RecordingStudio::ControlRoom::caclulateTotalFee(int numberOfActualHours, float overtimeRate, int reelsUsed){}
+void RecordingStudio::ControlRoom::bookRoom (bool isRoomBooked, int numberOfTotalClients)
+{
+    if( isRoomBooked == true )
+    {
+        void (numberOfTotalClients = 2);
+    }
+    else
+    {
+        void (numberOfTotalClients = 0);
+    }
+}
+void RecordingStudio::ControlRoom:: prepareRoom (bool powerOn, bool roomCleaned, int numberOfAssistants, float rateForAssistant)
+{
+    if( roomCleaned == true )
+    {
+        void (powerOn == true);
+        void (rateForAssistant = 1.1f);
+    }
+    else
+    {
+        void (numberOfAssistants = 1);
+    }
+}
+int RecordingStudio::ControlRoom::caclulateTotalFee (int numberOfActualHours, float overtimeRate, int reelsUsed)
+{
+    if( numberOfActualHours >= 8)
+    {
+        void (overtimeRate = 2.0f);
+    }
+    else
+    {
+        void (reelsUsed = 2);
+    }
+        {
+        return 2;
+        }
+}
+void RecordingStudio::recordAudio(){}
+void RecordingStudio::sendInvoice(){}
+void RecordingStudio::hostEvent(){}
+
 
 struct AudioInterface
 {
@@ -220,9 +259,12 @@ struct AudioInterface
     void outputAudio();
 };
 void AudioInterface::receiveAudio(){}
-float AudioInterface::displayLevels(){
-    return 2.2f;}
+float AudioInterface::displayLevels()
+    {
+    return 2.2f;
+    }
 void AudioInterface::outputAudio(){}
+
 
 struct StereoWidenerAudioPlugin
 {
@@ -254,10 +296,54 @@ struct StereoWidenerAudioPlugin
     char textInfo();
     float widenSignal();
 };
+void StereoWidenerAudioPlugin::MixKnob::getStateInformation(int sizeInBytes, float inputLevel)
+{
+    if( sizeInBytes == 256)
+    {
+        void (inputLevel = 2.0f);
+    }
+    else
+    {
+        void (inputLevel = 0.0f);
+    }
+}
+void StereoWidenerAudioPlugin::MixKnob::prepareToPlay(double sampleRate, int samplesPerBlock)
+{
+    if( samplesPerBlock == 44100)
+    {
+        void (sampleRate = 2);
+    }
+    else
+    {
+        void (sampleRate = 0);
+    }
+}
+bool StereoWidenerAudioPlugin::MixKnob::isBypassed(bool customBypassButton, bool nativeBypassButton)
+{
+    if( customBypassButton == true )
+    {
+        void (nativeBypassButton == false);
+        return 0;
+    }
+    else
+    {
+        void (nativeBypassButton == true);
+        return 0;
+    }
+}
+void StereoWidenerAudioPlugin::captureAudio(){}
+char StereoWidenerAudioPlugin::textInfo()
+    {
+    return 'g';
+    }
+float StereoWidenerAudioPlugin::widenSignal()
+    {
+    return 100.0f;
+    }
+
 
 struct GraphicalUserInterface
 {
-
     int GUIWidth = 10;
     int GUIHeight = 10;
     int freqDialsQuantity = 3;
@@ -269,12 +355,19 @@ struct GraphicalUserInterface
     float parameterMod();
 };
 
-float GraphicalUserInterface::displayInputLevel(){
-    return 1.0f;}
-float GraphicalUserInterface::displayAttenuation(){
-    return 93.5f;}
-float GraphicalUserInterface::parameterMod(){
-    return 44.44f;}
+float GraphicalUserInterface::displayInputLevel()
+    {
+    return 1.0f;
+    }
+float GraphicalUserInterface::displayAttenuation()
+    {
+    return 93.5f;
+    }
+float GraphicalUserInterface::parameterMod()
+    {
+    return 44.44f;
+    }
+
 
 struct License
 {
@@ -288,6 +381,11 @@ struct License
     char website();
     void copyProtection();
 };
+char License::displayTextBody()
+    {
+    return 't';
+    }
+
 
 struct Company
 {
@@ -301,6 +399,13 @@ struct Company
     void authEnable();
     void signContract();
 };
+int Company::createPlugin()
+    {
+        return 1;
+    }
+void Company::authEnable(){}
+void Company::signContract(){}
+
 
 struct SignalProcessor
 {
@@ -314,6 +419,13 @@ struct SignalProcessor
     float convertToDecibels();
     void sendAudio();
 };
+void SignalProcessor::receiveAudio(){}
+float SignalProcessor::convertToDecibels()
+    {
+        return 0;
+    }
+void SignalProcessor::sendAudio(){}
+
 
 struct DSPEngine
 {
@@ -328,6 +440,7 @@ struct DSPEngine
     bool outputEnabled();
 };
 
+
 struct EqualizerAudioPlugin
 {
     GraphicalUserInterface GUI;
@@ -340,7 +453,15 @@ struct EqualizerAudioPlugin
     float freqLevelChange();
     void buildType();
 };
-
+float EqualizerAudioPlugin::displayFreqLevelChange()
+    {
+        return 1.0f;
+    }
+float EqualizerAudioPlugin::freqLevelChange()
+    {
+        return 5.0f;
+    }
+void EqualizerAudioPlugin::buildType(){}
   
 /*
 =================
