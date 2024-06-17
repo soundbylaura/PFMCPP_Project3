@@ -190,21 +190,22 @@ struct RecordingStudio
         bool clientHasEngineer = false;
         int hoursBooked = 8;
 
-        void bookRoom (bool isBooked = true, int numberOfClients = 5);
-        void prepareRoom (bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
-        int caclulateTotalFee (int numberOfActualHours = 12, float overtimeRate = 650.50f, int reelsUsed = 4);
+        void bookRoom( bool isBooked = true, int numberOfClients = 5);
+        void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
+        int caclulateTotalFee( int numberOfActualHours = 12, float overtimeRate = 650.50f, int reelsUsed = 4);
     };
 
-    void beginRecordingSession (ControlRoom controlRoomA);
-    void startRateClock (bool hasGroupon = true);
-    void closeRoom (ControlRoom controlRoomA, bool equipmentOff = true);
-    int billClient (ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
+    void beginRecordingSession( ControlRoom controlRoomA );
+    void startRateClock( bool hasGroupon = true);
+    void closeRoom( ControlRoom controlRoomA, bool equipmentOff = true);
+    int billClient( ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
 
     void recordAudio();
     void sendInvoice();
     void hostEvent();
 };
-void RecordingStudio::ControlRoom::bookRoom (bool isRoomBooked, int numberOfTotalClients)
+
+void RecordingStudio::ControlRoom::bookRoom( bool isRoomBooked, int numberOfTotalClients)
 {
     if( isRoomBooked == true )
     {
@@ -215,7 +216,8 @@ void RecordingStudio::ControlRoom::bookRoom (bool isRoomBooked, int numberOfTota
         void (numberOfTotalClients = 0);
     }
 }
-void RecordingStudio::ControlRoom:: prepareRoom (bool powerOn, bool roomCleaned, int numberOfAssistants, float rateForAssistant)
+
+void RecordingStudio::ControlRoom::prepareRoom( bool powerOn, bool roomCleaned, int numberOfAssistants, float rateForAssistant)
 {
     if( roomCleaned == true )
     {
@@ -227,9 +229,10 @@ void RecordingStudio::ControlRoom:: prepareRoom (bool powerOn, bool roomCleaned,
         void (numberOfAssistants = 1);
     }
 }
-int RecordingStudio::ControlRoom::caclulateTotalFee (int numberOfActualHours, float overtimeRate, int reelsUsed)
+
+int RecordingStudio::ControlRoom::caclulateTotalFee( int numberOfActualHours, float overtimeRate, int reelsUsed)
 {
-    if( numberOfActualHours >= 8)
+    if( numberOfActualHours >= 8 )
     {
         void (overtimeRate = 2.0f);
     }
@@ -258,6 +261,7 @@ struct AudioInterface
     float displayLevels();
     void outputAudio();
 };
+
 void AudioInterface::receiveAudio(){}
 float AudioInterface::displayLevels()
     {
@@ -282,23 +286,23 @@ struct StereoWidenerAudioPlugin
         int ticksOnSlider = 50;
         std::string sliderColor = "Black";
 
-        void getStateInformation (int sizeInBytes, float inputLevel);
-        void prepareToPlay (double sampleRate, int samplesPerBlock);
-        bool isBypassed (bool customBypassButton, bool nativeBypassButton);
-
+        void getStateInformation( int sizeInBytes, float inputLevel);
+        void prepareToPlay( double sampleRate, int samplesPerBlock);
+        bool isBypassed( bool customBypassButton, bool nativeBypassButton);
     };
 
-    void increaseWetness (MixKnob increase);
-    void decreaseWetness (MixKnob decrease);
-    void smartMute (int audioInput = 1, float audioOutput = 1.1f);
+    void increaseWetness( MixKnob increase);
+    void decreaseWetness( MixKnob decrease);
+    void smartMute( int audioInput = 1, float audioOutput = 1.1f);
 
     void captureAudio();
     char textInfo();
     float widenSignal();
 };
-void StereoWidenerAudioPlugin::MixKnob::getStateInformation(int sizeInBytes, float inputLevel)
+
+void StereoWidenerAudioPlugin::MixKnob::getStateInformation( int sizeInBytes, float inputLevel)
 {
-    if( sizeInBytes == 256)
+    if( sizeInBytes == 256 )
     {
         void (inputLevel = 2.0f);
     }
@@ -307,9 +311,9 @@ void StereoWidenerAudioPlugin::MixKnob::getStateInformation(int sizeInBytes, flo
         void (inputLevel = 0.0f);
     }
 }
-void StereoWidenerAudioPlugin::MixKnob::prepareToPlay(double sampleRate, int samplesPerBlock)
+void StereoWidenerAudioPlugin::MixKnob::prepareToPlay( double sampleRate, int samplesPerBlock)
 {
-    if( samplesPerBlock == 44100)
+    if( samplesPerBlock == 44100 )
     {
         void (sampleRate = 2);
     }
@@ -318,7 +322,7 @@ void StereoWidenerAudioPlugin::MixKnob::prepareToPlay(double sampleRate, int sam
         void (sampleRate = 0);
     }
 }
-bool StereoWidenerAudioPlugin::MixKnob::isBypassed(bool customBypassButton, bool nativeBypassButton)
+bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, bool nativeBypassButton)
 {
     if( customBypassButton == true )
     {
@@ -381,6 +385,7 @@ struct License
     char website();
     void copyProtection();
 };
+
 char License::displayTextBody()
     {
     return 't';
@@ -399,9 +404,10 @@ struct Company
     void authEnable();
     void signContract();
 };
+
 int Company::createPlugin()
     {
-        return 1;
+    return 1;
     }
 void Company::authEnable(){}
 void Company::signContract(){}
@@ -419,10 +425,11 @@ struct SignalProcessor
     float convertToDecibels();
     void sendAudio();
 };
+
 void SignalProcessor::receiveAudio(){}
 float SignalProcessor::convertToDecibels()
     {
-        return 0;
+    return 0;
     }
 void SignalProcessor::sendAudio(){}
 
@@ -453,13 +460,14 @@ struct EqualizerAudioPlugin
     float freqLevelChange();
     void buildType();
 };
+
 float EqualizerAudioPlugin::displayFreqLevelChange()
     {
-        return 1.0f;
+    return 1.0f;
     }
 float EqualizerAudioPlugin::freqLevelChange()
     {
-        return 5.0f;
+    return 5.0f;
     }
 void EqualizerAudioPlugin::buildType(){}
   
