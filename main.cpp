@@ -108,13 +108,8 @@ struct CarWash
     You'll need to insert the Person struct from the video in the space below.
  */
 
-struct Limb{};
-
 struct Person
 {
-    Limb leftFoot;
-    Limb rightFoot;
-
     int age;
     int height;
     float hairLength;
@@ -122,12 +117,20 @@ struct Person
     unsigned int SATScore;
     int distanceTraveled;
 
-    void run( int howFast, bool startWithLeftFoot);
-    void stepForward( Limb leftFoot, Limb rightFoot, bool inMotion = true);
-    int stepSize( int = 3);
+    struct Limb
+    {
+        bool hasFingers = false;
+        bool hasToes =  true;
+
+        int howFast( int = 12);
+        void stepForward();
+        int stepSize( int = 3);
+    };
+
+    void run( Limb leftFoot, Limb rightFoot, int howFast, bool startWithLeftFoot);
 };
 
-void Person::run( int howFast, bool startWithLeftFoot)
+void Person::run( Limb leftFoot, Limb rightFoot, int howFast, bool startWithLeftFoot)
 {
     if( startWithLeftFoot == true )
     {
@@ -139,7 +142,7 @@ void Person::run( int howFast, bool startWithLeftFoot)
         rightFoot.stepForward();
         leftFoot.stepForward();
     }
-    distanceTraveled += leftFoot.stepSize() + rightFoot.stepSize();
+    distanceTraveled += (leftFoot.stepSize() + rightFoot.stepSize()) * howFast;
 }
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
