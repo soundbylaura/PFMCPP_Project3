@@ -119,12 +119,14 @@ struct Person
 
     struct Limb
     {
-        int howFast();
         void stepForward();
         int stepSize();
     };
 
-    void run( Limb leftFoot, Limb rightFoot, bool startWithLeftFoot);
+    Limb leftFoot;
+    Limb rightFoot;
+
+    void run( int howFast, bool startWithLeftFoot);
 };
 
 void Person::Limb::stepForward(){}
@@ -133,7 +135,7 @@ int Person::Limb::stepSize()
     return 3;
     }
 
-void Person::run( Limb leftFoot, Limb rightFoot, bool startWithLeftFoot)
+void Person::run( int howFast, bool startWithLeftFoot)
 {
     if( startWithLeftFoot == true )
     {
