@@ -147,7 +147,7 @@ void Person::run( int howFast, bool startWithLeftFoot)
         rightFoot.stepForward();
         leftFoot.stepForward();
     }
-    distanceTraveled += (leftFoot.stepSize() + rightFoot.stepSize()) *howFast;
+    distanceTraveled += (leftFoot.stepSize() + rightFoot.stepSize()) * howFast;
 }
  /*
  2) provide implementations for the member functions you declared in your 10 user-defined types from the previous video outside of your UDT definitions.
