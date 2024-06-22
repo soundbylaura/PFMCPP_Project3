@@ -204,7 +204,7 @@ struct RecordingStudio
 
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
-        int caclulateTotalFee( int numberOfActualHours = 12, float overtimeRate = 650.50f, int reelsUsed = 4);
+        float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
     };
 
     void beginRecordingSession( ControlRoom controlRoomA );
@@ -217,6 +217,45 @@ struct RecordingStudio
     void hostEvent();
 };
 
+void RecordingStudio::ControlRoom::bookRoom( bool isRoomBooked, int numberOfTotalClients)
+{
+    if( isRoomBooked == true )
+    {
+        numberOfTotalClients = 2;
+    }
+    else
+    {
+        numberOfTotalClients = 0;
+    }
+}
+
+void RecordingStudio::ControlRoom::prepareRoom( bool powerOn, bool roomCleaned, int numberOfAssistants, float rateForAssistant)
+{
+    if( roomCleaned == true )
+    {
+        powerOn = true;
+        rateForAssistant = 1.1f;
+    }
+    else
+    {
+        numberOfAssistants = 1;
+    }
+}
+
+float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours, float overtimeRate, float reelsUsed)
+{
+    if( numberOfActualHours >= 8 )
+    {
+        overtimeRate = 2.0f;
+    }
+    else
+    {
+        reelsUsed = 2;
+    }
+        {
+        return ( overtimeRate * numberOfActualHours) + reelsUsed;
+        }
+}
 void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent(){}
@@ -273,6 +312,43 @@ struct StereoWidenerAudioPlugin
     float widenSignal();
 };
 
+void StereoWidenerAudioPlugin::MixKnob::getStateInformation( int sizeInBytes, float inputLevel)
+{
+    if( sizeInBytes == 256 )
+    {
+        inputLevel = 2.0f;
+    }
+    else
+    {
+        inputLevel = 0.0f;
+    }
+}
+void StereoWidenerAudioPlugin::MixKnob::prepareToPlay( double sampleRate, int samplesPerBlock)
+{
+    if( samplesPerBlock == 44100 )
+    {
+        sampleRate = 2;
+    }
+    else
+    {
+        sampleRate = 0;
+    }
+}
+bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, bool nativeBypassButton)
+{
+    if( customBypassButton == true )
+    {
+        nativeBypassButton = false;
+    }
+    else
+    {
+        nativeBypassButton = true;
+    }
+        {
+        return true;
+        }
+}
+
 void StereoWidenerAudioPlugin::captureAudio(){}
 char StereoWidenerAudioPlugin::textInfo()
     {
@@ -328,7 +404,11 @@ char License::displayTextBody()
     {
     return 't';
     }
-
+char License::website()
+    {
+    return 'w';
+    }
+void License::copyProtection(){}
 
 struct Company
 {
@@ -374,8 +454,8 @@ void SignalProcessor::sendAudio(){}
 
 struct DSPEngine
 {
-    double gainInputLevel = 0;
-    double gainRampDuration = 3482;
+    float gainInputLevel = 0.0f;
+    float gainRampDuration = 3482.0f;
     float wetLevel = 33.1f;
     std::string effect = ("Chorus" "Phase" "Flange");
     float gainOutputLevel = -6.4f;
@@ -384,6 +464,16 @@ struct DSPEngine
     float modifyGain();
     bool outputEnabled();
 };
+
+void DSPEngine::createChorus(){}
+float DSPEngine::modifyGain()
+    {
+    return (gainInputLevel + gainOutputLevel);
+    }
+bool DSPEngine::outputEnabled()
+    {
+    return true;
+    }
 
 
 struct EqualizerAudioPlugin
