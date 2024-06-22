@@ -131,9 +131,9 @@ struct Person
 
 void Person::Limb::stepForward(){}
 int Person::Limb::stepSize()
-    {
+{
     return 3;
-    }
+}
 
 void Person::run( int howFast, bool startWithLeftFoot)
 {
@@ -217,45 +217,6 @@ struct RecordingStudio
     void hostEvent();
 };
 
-void RecordingStudio::ControlRoom::bookRoom( bool isRoomBooked, int numberOfTotalClients)
-{
-    if( isRoomBooked == true )
-    {
-        void (numberOfTotalClients = 2);
-    }
-    else
-    {
-        void (numberOfTotalClients = 0);
-    }
-}
-
-void RecordingStudio::ControlRoom::prepareRoom( bool powerOn, bool roomCleaned, int numberOfAssistants, float rateForAssistant)
-{
-    if( roomCleaned == true )
-    {
-        void (powerOn == true);
-        void (rateForAssistant = 1.1f);
-    }
-    else
-    {
-        void (numberOfAssistants = 1);
-    }
-}
-
-int RecordingStudio::ControlRoom::caclulateTotalFee( int numberOfActualHours, float overtimeRate, int reelsUsed)
-{
-    if( numberOfActualHours >= 8 )
-    {
-        void (overtimeRate = 2.0f);
-    }
-    else
-    {
-        void (reelsUsed = 2);
-    }
-        {
-        return 2;
-        }
-}
 void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent(){}
@@ -312,41 +273,6 @@ struct StereoWidenerAudioPlugin
     float widenSignal();
 };
 
-void StereoWidenerAudioPlugin::MixKnob::getStateInformation( int sizeInBytes, float inputLevel)
-{
-    if( sizeInBytes == 256 )
-    {
-        void (inputLevel = 2.0f);
-    }
-    else
-    {
-        void (inputLevel = 0.0f);
-    }
-}
-void StereoWidenerAudioPlugin::MixKnob::prepareToPlay( double sampleRate, int samplesPerBlock)
-{
-    if( samplesPerBlock == 44100 )
-    {
-        void (sampleRate = 2);
-    }
-    else
-    {
-        void (sampleRate = 0);
-    }
-}
-bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, bool nativeBypassButton)
-{
-    if( customBypassButton == true )
-    {
-        void (nativeBypassButton == false);
-        return 0;
-    }
-    else
-    {
-        void (nativeBypassButton == true);
-        return 0;
-    }
-}
 void StereoWidenerAudioPlugin::captureAudio(){}
 char StereoWidenerAudioPlugin::textInfo()
     {
