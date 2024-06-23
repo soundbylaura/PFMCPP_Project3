@@ -413,8 +413,6 @@ struct SignalProcessor
     float returnedLevel = (rawVolume * equation);
     float effectLevel = (returnedLevel);
 
-    auto gainToDecibels();
-
     struct Fader
     {
         float increaseLevel();
