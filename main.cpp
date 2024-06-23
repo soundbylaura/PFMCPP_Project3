@@ -130,10 +130,7 @@ struct Person
 };
 
 void Person::Limb::stepForward(){}
-int Person::Limb::stepSize()
-{
-    return 3;
-}
+int Person::Limb::stepSize() { return 3; }
 
 void Person::run( int howFast, bool startWithLeftFoot)
 {
@@ -252,9 +249,9 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     {
         reelsUsed = 2;
     }
-        {
-        return ( overtimeRate * numberOfActualHours) + reelsUsed;
-        }
+    {
+    return ( overtimeRate * numberOfActualHours) + reelsUsed;
+    }
 }
 void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
@@ -275,10 +272,7 @@ struct AudioInterface
 };
 
 void AudioInterface::receiveAudio(){}
-float AudioInterface::displayLevels()
-    {
-    return 2.2f;
-    }
+float AudioInterface::displayLevels() { return 2.2f; }
 void AudioInterface::outputAudio(){}
 
 
@@ -344,20 +338,14 @@ bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, boo
     {
         nativeBypassButton = true;
     }
-        {
-        return true;
-        }
+    {
+    return true;
+    }
 }
 
 void StereoWidenerAudioPlugin::captureAudio(){}
-char StereoWidenerAudioPlugin::textInfo()
-    {
-    return 'g';
-    }
-float StereoWidenerAudioPlugin::widenSignal()
-    {
-    return 100.0f;
-    }
+char StereoWidenerAudioPlugin::textInfo() { return 'g'; }
+float StereoWidenerAudioPlugin::widenSignal() { return 100.0f; }
 
 
 struct GraphicalUserInterface
@@ -373,18 +361,9 @@ struct GraphicalUserInterface
     float parameterMod();
 };
 
-float GraphicalUserInterface::displayInputLevel()
-    {
-    return 1.0f;
-    }
-float GraphicalUserInterface::displayAttenuation()
-    {
-    return 93.5f;
-    }
-float GraphicalUserInterface::parameterMod()
-    {
-    return 44.44f;
-    }
+float GraphicalUserInterface::displayInputLevel() { return 1.0f; }
+float GraphicalUserInterface::displayAttenuation() { return 93.5f; }
+float GraphicalUserInterface::parameterMod() { return 44.44f; }
 
 
 struct License
@@ -400,14 +379,8 @@ struct License
     void copyProtection();
 };
 
-char License::displayTextBody()
-    {
-    return 't';
-    }
-char License::website()
-    {
-    return 'w';
-    }
+char License::displayTextBody() { return 't'; }
+char License::website() { return 'w'; }
 void License::copyProtection(){}
 
 struct Company
@@ -418,15 +391,12 @@ struct Company
     float companyIncome = 0.0f;
     float equipmentCost = 200.25f;
 
-    int createPlugin();
+    void createPlugin();
     void authEnable();
     void signContract();
 };
 
-int Company::createPlugin()
-    {
-    return 1;
-    }
+void Company::createPlugin(){}
 void Company::authEnable(){}
 void Company::signContract(){}
 
@@ -438,18 +408,31 @@ struct SignalProcessor
     std::string type = "Unknown";
     float numBuffer = 2.2f;
     int program = 4;
+    float rawVolume;
+    float equation = (pow(10, volumeKnob.getValue() / 20));
+    float returnedLevel = (rawVolume * equation);
+    float effectLevel = (returnedLevel);
 
-    void receiveAudio();
-    float convertToDecibels();
-    void sendAudio();
+    auto gainToDecibels();
+
+    struct Fader
+    {
+        float increaseLevel();
+        float getValue();
+    };
+
+    Fader volumeKnob;
+    float gainToDecibels( bool volumeKnobUp);
 };
 
-void SignalProcessor::receiveAudio(){}
-float SignalProcessor::convertToDecibels()
+float SignalProcessor::gainToDecibels( bool volumeKnobUp)
+{
+    if( volumeKnobUp == true )
     {
-    return 0;
+        returnedLevel = volumeKnob.increaseLevel();
     }
-void SignalProcessor::sendAudio(){}
+    return effectLevel;
+}
 
 
 struct DSPEngine
@@ -462,18 +445,12 @@ struct DSPEngine
 
     void createChorus();
     float modifyGain();
-    bool outputEnabled();
+    bool enableOutput();
 };
 
 void DSPEngine::createChorus(){}
-float DSPEngine::modifyGain()
-    {
-    return (gainInputLevel + gainOutputLevel);
-    }
-bool DSPEngine::outputEnabled()
-    {
-    return true;
-    }
+float DSPEngine::modifyGain() { return (gainInputLevel + gainOutputLevel); }
+bool DSPEngine::enableOutput() { return true; }
 
 
 struct EqualizerAudioPlugin
@@ -489,14 +466,8 @@ struct EqualizerAudioPlugin
     void buildType();
 };
 
-float EqualizerAudioPlugin::displayFreqLevelChange()
-    {
-    return 1.0f;
-    }
-float EqualizerAudioPlugin::freqLevelChange()
-    {
-    return 5.0f;
-    }
+float EqualizerAudioPlugin::displayFreqLevelChange() { return 1.0f; }
+float EqualizerAudioPlugin::freqLevelChange() { return 5.0f; }
 void EqualizerAudioPlugin::buildType(){}
   
 /*
