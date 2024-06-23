@@ -415,7 +415,7 @@ struct SignalProcessor
 
     struct Fader
     {
-        float levelIncreased();
+        float levelIsIncreased();
         float getValue();
     };
 
@@ -427,7 +427,7 @@ float SignalProcessor::gainToDecibels( bool volumeKnobUp)
 {
     if( volumeKnobUp == true )
     {
-        returnedLevel = volumeKnob.levelIncreased();
+        returnedLevel = volumeKnob.levelIsIncreased();
     }
     return effectLevel;
 }
