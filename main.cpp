@@ -409,6 +409,7 @@ struct SignalProcessor
     float numBuffer = 2.2f;
     int program = 4;
     float rawVolume;
+
     float equation = (pow(10, volumeKnob.getValue() / 20));
     float returnedLevel = (rawVolume * equation);
     float effectLevel = (returnedLevel);
