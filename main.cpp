@@ -249,7 +249,7 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     {
         reelsUsed = 2;
     }
-    {
+    { FIXME: no need for these curly braces around this return statement
     return ( overtimeRate * numberOfActualHours) + reelsUsed;
     }
 }
@@ -338,7 +338,7 @@ bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, boo
     {
         nativeBypassButton = true;
     }
-    {
+    { FIXME: no need for these curly braces around this return statement
     return true;
     }
 }
