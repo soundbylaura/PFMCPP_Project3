@@ -28,6 +28,7 @@ Thing: Car Wash
 
 #include <iostream>
 #include <string>
+#include <cmath>
 namespace Part1eVersion 
 {
 struct CarWash        
@@ -169,7 +170,8 @@ struct Bicycle
 {
     int numGears = 18;
     float tireAirPressure = 70.0f;
-    std::string handlebar = ("Drop" "Flat");
+
+    std::string handlebar = "Flat";
     int bottleHolders = 3;
     int rides = 5;
 
@@ -260,10 +262,10 @@ void RecordingStudio::hostEvent(){}
 struct AudioInterface
 {
     int audioInputs = 16;
-    std::string inputType = ("XLR" "TRS" "MIDI" "Optical");
-    std::string enclosureMaterial = ("Metal" "Plastic");
-    std::string outputType = ("XLR" "TRS" "MIDI" "Optical" "RCA");
-    std::string inputsLocation = ("Front" "Back");
+    std::string inputType = "XLR";
+    std::string enclosureMaterial = "Metal";
+    std::string outputType = "XLR";
+    std::string inputsLocation = "Front";
 
     void receiveAudio();
     float displayLevels();
@@ -278,7 +280,7 @@ void AudioInterface::outputAudio(){}
 struct StereoWidenerAudioPlugin
 {
     int GUIElements = 2;
-    std::string knobsColors = ("Black" "Gray" "Red");
+    std::string knobsColors = "Black";
     float memoryAllocated = 64.0f;
     int fontSizeToolTips = 32;
     float knobsLocation = 0;
@@ -349,8 +351,8 @@ struct GraphicalUserInterface
 {
     int GUIWidth = 10;
     int GUIHeight = 10;
-    int freqDialsQuantity = 3;
-    std::string freqDialsNames = ("Freq" "Gain" "Q");
+    int sliderWidth = 40;
+    std::string dialName = "Freq"; 
     std::string backgroundColor = "Purple";
 
     float displayInputLevel(); 
@@ -405,29 +407,15 @@ struct SignalProcessor
     std::string type = "Unknown";
     float numBuffer = 2.2f;
     int program = 4;
-    float rawVolume;
 
-    float equation = (pow(10, volumeKnob.getValue() / 20));
-    float returnedLevel = (rawVolume * equation);
-    float effectLevel = (returnedLevel);
-
-    struct Fader
-    {
-        float levelIsIncreased();
-        float getValue();
-    };
-
-    Fader volumeKnob;
-    float gainToDecibels( bool volumeKnobUp);
+    double changeGainToDecibels( double gainLevel ); 
+    float processSample( float inputSample ) { return inputSample * 2; }
+    float createSilentSample() { return 0.f; }
 };
 
-float SignalProcessor::gainToDecibels( bool volumeKnobUp)
+double SignalProcessor::changeGainToDecibels( double gainLevel ) 
 {
-    if( volumeKnobUp == true )
-    {
-        returnedLevel = volumeKnob.levelIsIncreased();
-    }
-    return effectLevel;
+    return std::pow(10.0, gainLevel / 20.0);
 }
 
 
@@ -436,7 +424,7 @@ struct DSPEngine
     float gainInputLevel = 0.0f;
     float gainRampDuration = 3482.0f;
     float wetLevel = 33.1f;
-    std::string effect = ("Chorus" "Phase" "Flange");
+    std::string effect = "Chorus";
     float gainOutputLevel = -6.4f;
 
     void createChorus();
@@ -459,12 +447,12 @@ struct EqualizerAudioPlugin
 
     float displayFreqLevelChange();
     float freqLevelChange();
-    void buildType();
+    void buildAType();
 };
 
 float EqualizerAudioPlugin::displayFreqLevelChange() { return 1.0f; }
 float EqualizerAudioPlugin::freqLevelChange() { return 5.0f; }
-void EqualizerAudioPlugin::buildType(){}
+void EqualizerAudioPlugin::buildAType(){}
   
 /*
 =================
