@@ -78,7 +78,6 @@ struct Bicycle
     Bicycle();
     int numGears = 18;
     float tireAirPressure = 70.0f;
-
     std::string handlebar = "Flat";
     int bottleHolders = 3;
     int rides = 5;
@@ -88,7 +87,16 @@ struct Bicycle
     void repairs();
 };
 
-void Bicycle::transportPerson(){}
+Bicycle::Bicycle()
+{
+    std::cout << "Bicycle" << std::endl;
+}
+
+void Bicycle::transportPerson()
+{
+    std::cout << "This should equal five: " << rides <<std::endl; 
+}
+
 void Bicycle::rollDownhill(){}
 void Bicycle::repairs(){}
 
@@ -330,10 +338,10 @@ struct SignalProcessor
     float createSilentSample() { return 0.f; }
 };
 
-double SignalProcessor::changeGainToDecibels( double gainLevel ) 
-{
-    return std::pow(10.0, gainLevel / 20.0);
-}
+// double SignalProcessor::changeGainToDecibels( double gainLevel ) 
+// {
+//     return std::pow(10.0, gainLevel / 20.0);
+// }
 
 
 struct DSPEngine
@@ -402,8 +410,19 @@ paste your code below
 
 int main()
 {
-    Example::main(); 
+    // Example::main(); 
 
+{
+    Bicycle purple;              //3) instantiating a UDT named 'foo' in main()
+    purple.transportPerson();     //4) calling a member function of the UDT instance.
+
+    //5) a std::cout statement accessing foo's member variable.
+    //It also demonstrates a 'ternary expression', which is syntactic shorthand for an 'if/else' expression
+    std::cout << "Is purple's member var 'rides' equal to 5? " << (purple.rides == 5 ? "Yes" : "No") << "\n";
+
+    return 0;
+}
+    
     //add your code here: 
     std::cout << "good to go!" << std::endl;
 }
