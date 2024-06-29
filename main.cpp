@@ -75,6 +75,7 @@ int main()
 
 struct Bicycle
 {
+    Bicycle();
     int numGears = 18;
     float tireAirPressure = 70.0f;
 
@@ -94,6 +95,7 @@ void Bicycle::repairs(){}
 
 struct RecordingStudio
 {
+    RecordingStudio();
     int microphones = 28;
     int numOfClients = 33;
     float expenseCatering = 300.0f;
@@ -102,6 +104,7 @@ struct RecordingStudio
 
     struct ControlRoom
     {
+        ControlRoom();
         bool isBooked = false;
         float ratePerHour = 500.0f;
         std::string consoleType = "Analog";
@@ -168,6 +171,7 @@ void RecordingStudio::hostEvent(){}
 
 struct AudioInterface
 {
+    AudioInterface();
     int audioInputs = 16;
     std::string inputType = "XLR";
     std::string enclosureMaterial = "Metal";
@@ -186,6 +190,7 @@ void AudioInterface::outputAudio(){}
 
 struct StereoWidenerAudioPlugin
 {
+    StereoWidenerAudioPlugin();
     int GUIElements = 2;
     std::string knobsColors = "Black";
     float memoryAllocated = 64.0f;
@@ -194,6 +199,7 @@ struct StereoWidenerAudioPlugin
 
     struct MixKnob
     {
+        MixKnob();
         std::string label = "Mix";
         int sliderHeight = 10; 
         int sliderWidth = 2;
@@ -256,6 +262,7 @@ float StereoWidenerAudioPlugin::widenSignal() { return 100.0f; }
 
 struct GraphicalUserInterface
 {
+    GraphicalUserInterface();
     int GUIWidth = 10;
     int GUIHeight = 10;
     int sliderWidth = 40;
@@ -274,6 +281,7 @@ float GraphicalUserInterface::parameterMod() { return 44.44f; }
 
 struct License
 {
+    License();
     std::string bodyText = "You must be this tall to ride this ride.";
     int bodyTextFontSize = 18;
     std::string fileFormat = "PDF";
@@ -291,6 +299,7 @@ void License::copyProtection(){}
 
 struct Company
 {
+    Company();
     std::string companyName = "SBL Plugins";
     std::string companyLocation = "Atlanta";
     int companyEmployees = 1;
@@ -309,6 +318,7 @@ void Company::signContract(){}
 
 struct SignalProcessor
 {
+    SignalProcessor();
     float numSamples = 256.0f;
     int numChannels = 2;
     std::string type = "Unknown";
@@ -328,6 +338,7 @@ double SignalProcessor::changeGainToDecibels( double gainLevel )
 
 struct DSPEngine
 {
+    DSPEngine();
     float gainInputLevel = 0.0f;
     float gainRampDuration = 3482.0f;
     float wetLevel = 33.1f;
@@ -346,6 +357,7 @@ bool DSPEngine::enableOutput() { return true; }
 
 struct EqualizerAudioPlugin
 {
+    EqualizerAudioPlugin();
     GraphicalUserInterface GUI;
     License license;
     Company company;
