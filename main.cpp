@@ -35,6 +35,7 @@
  */
 
 #include <iostream>
+#include <cmath>
 namespace Example 
 {
 struct UDT  // my user defined type named 'UDT'
@@ -94,7 +95,7 @@ Bicycle::Bicycle()
 
 void Bicycle::transportPerson()
 {
-    std::cout << "This should equal five: " << rides <<std::endl; 
+    std::cout << "A constructor's job is to set up the initial values of the member variables. " <<std::endl; 
 }
 
 void Bicycle::rollDownhill(){}
@@ -124,6 +125,11 @@ struct RecordingStudio
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
     };
 
+    // RecordingStudio::ControlRoom::ControlRoom()
+    // {
+    //    std::cout << "ControlRoom" << std::endl; 
+    // }
+
     void beginRecordingSession( ControlRoom controlRoomA );
     void startRateClock( bool hasGroupon = true);
     void closeRoom( ControlRoom controlRoomA, bool equipmentOff = true);
@@ -133,6 +139,11 @@ struct RecordingStudio
     void sendInvoice();
     void hostEvent();
 };
+
+RecordingStudio::RecordingStudio()
+{
+    std::cout << "RecordingStudio" << std::endl;
+}
 
 void RecordingStudio::ControlRoom::bookRoom( bool isRoomBooked, int numberOfTotalClients)
 {
@@ -157,6 +168,7 @@ void RecordingStudio::ControlRoom::prepareRoom( bool powerOn, bool roomCleaned, 
     {
         numberOfAssistants = 1;
     }
+    std::cout << "Constructors give us a way to set up the values of member variables with valid values." << std::endl;
 }
 
 float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours, float overtimeRate, float reelsUsed)
@@ -191,9 +203,17 @@ struct AudioInterface
     void outputAudio();
 };
 
+AudioInterface::AudioInterface()
+{
+    std::cout << "AudioInterface" << std::endl;
+}
+
 void AudioInterface::receiveAudio(){}
 float AudioInterface::displayLevels() { return 2.2f; }
-void AudioInterface::outputAudio(){}
+void AudioInterface::outputAudio()
+{
+    std::cout << "Primitives do not have built-in constructors." << std::endl;
+}
 
 
 struct StereoWidenerAudioPlugin
@@ -227,6 +247,11 @@ struct StereoWidenerAudioPlugin
     char textInfo();
     float widenSignal();
 };
+
+StereoWidenerAudioPlugin::StereoWidenerAudioPlugin()
+{
+    std::cout << "StereoWidenerAudioPlugin" << std::endl;
+}
 
 void StereoWidenerAudioPlugin::MixKnob::getStateInformation( int sizeInBytes, float inputLevel)
 {
@@ -263,8 +288,11 @@ bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, boo
     return true;
 }
 
-void StereoWidenerAudioPlugin::captureAudio(){}
-char StereoWidenerAudioPlugin::textInfo() { return 'g'; }
+void StereoWidenerAudioPlugin::captureAudio()
+{
+    std::cout << "Constructors don't have a return type, not even VOID." << std::endl;
+}
+char StereoWidenerAudioPlugin::textInfo(){ return 'g'; }
 float StereoWidenerAudioPlugin::widenSignal() { return 100.0f; }
 
 
@@ -277,12 +305,20 @@ struct GraphicalUserInterface
     std::string dialName = "Freq"; 
     std::string backgroundColor = "Purple";
 
-    float displayInputLevel(); 
+    void displayInputLevel(); 
     float displayAttenuation();
     float parameterMod();
 };
 
-float GraphicalUserInterface::displayInputLevel() { return 1.0f; }
+GraphicalUserInterface::GraphicalUserInterface()
+{
+    std::cout << "GraphicalUserInterface" << std::endl;
+}
+
+void GraphicalUserInterface::displayInputLevel()
+{ 
+    std::cout << "The constructor name is the same name as the UDT." << std::endl;
+}
 float GraphicalUserInterface::displayAttenuation() { return 93.5f; }
 float GraphicalUserInterface::parameterMod() { return 44.44f; }
 
@@ -301,9 +337,18 @@ struct License
     void copyProtection();
 };
 
+License::License()
+{
+    std::cout << "License" << std::endl;
+}
+
 char License::displayTextBody() { return 't'; }
 char License::website() { return 'w'; }
-void License::copyProtection(){}
+void License::copyProtection()
+{
+    std::cout << "If no constructor is written, the compiler uses the Implicit Constructor." << std::endl;
+}
+
 
 struct Company
 {
@@ -319,9 +364,17 @@ struct Company
     void signContract();
 };
 
+Company::Company()
+{
+    std::cout << "Company" << std::endl;
+}
+
 void Company::createPlugin(){}
 void Company::authEnable(){}
-void Company::signContract(){}
+void Company::signContract()
+{
+    std::cout << "We write constructors with (); to indicate it's a declaration." << std::endl;
+}
 
 
 struct SignalProcessor
@@ -338,10 +391,15 @@ struct SignalProcessor
     float createSilentSample() { return 0.f; }
 };
 
-// double SignalProcessor::changeGainToDecibels( double gainLevel ) 
-// {
-//     return std::pow(10.0, gainLevel / 20.0);
-// }
+SignalProcessor::SignalProcessor()
+{
+    std::cout << "SignalProcessor" << std::endl;
+}
+
+double SignalProcessor::changeGainToDecibels( double gainLevel ) 
+{
+    return std::pow(10.0, gainLevel / 20.0); std::cout << "This message won't be seen hahaha." << std::endl;
+}
 
 
 struct DSPEngine
@@ -358,7 +416,15 @@ struct DSPEngine
     bool enableOutput();
 };
 
-void DSPEngine::createChorus(){}
+DSPEngine::DSPEngine()
+{
+    std::cout << "DSPEngine" << std::endl;
+}
+
+void DSPEngine::createChorus()
+{
+    std::cout << "Using a constructor prevents member variables from returning garbage values." << std::endl;
+}
 float DSPEngine::modifyGain() { return (gainInputLevel + gainOutputLevel); }
 bool DSPEngine::enableOutput() { return true; }
 
@@ -377,9 +443,17 @@ struct EqualizerAudioPlugin
     void buildAType();
 };
 
+EqualizerAudioPlugin::EqualizerAudioPlugin()
+{
+    std::cout << "EqualizerAudioPlugin" << std::endl;
+}
+
 float EqualizerAudioPlugin::displayFreqLevelChange() { return 1.0f; }
 float EqualizerAudioPlugin::freqLevelChange() { return 5.0f; }
-void EqualizerAudioPlugin::buildAType(){}
+void EqualizerAudioPlugin::buildAType()
+{
+    std::cout << "A constructor is a Special Member Function that every UDT has." << std::endl;
+}
   
 /*
 =================
