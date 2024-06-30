@@ -388,7 +388,7 @@ struct SignalProcessor
 
     double changeGainToDecibels( double gainLevel ); 
     float processSample( float inputSample ) { return inputSample * 2; }
-    float createSilentSample() { return 0.f; }
+    void savePreset(){}
 };
 
 SignalProcessor::SignalProcessor()
@@ -398,7 +398,12 @@ SignalProcessor::SignalProcessor()
 
 double SignalProcessor::changeGainToDecibels( double gainLevel ) 
 {
-    return std::pow(10.0, gainLevel / 20.0); std::cout << "This message won't be seen hahaha." << std::endl;
+    return std::pow(10.0, gainLevel / 20.0);
+}
+
+void savePreset()
+{
+    std::cout << "Interestingly, I changed this from a float to a void so I could return text." << std::endl;
 }
 
 
