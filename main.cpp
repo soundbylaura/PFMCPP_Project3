@@ -412,7 +412,7 @@ double SignalProcessor::changeGainToDecibels( double gainLevel )
 
 void SignalProcessor::savePreset()
 {
-    std::cout << "Interestingly, I changed this from a float to a void so I could return text." << std::endl;
+    std::cout << "Step-in is a function in X-code to see how your code changes as it runs." << std::endl;
 }
 
 
@@ -488,20 +488,14 @@ Part 1e - Step 19: Request a review
 paste your code below
 */
 
-
-
-
-
-
-
-
-
 int main()
 {
 
 {
-    Bicycle purple; //I am instantiating a UDT named purple in the main()
-    purple.transportPerson(); //I am calling a member function of the UDT instance
+    Bicycle purple; //Note for myself: I am instantiating a UDT named purple in the main()
+    purple.transportPerson(); //Note for myself:  I am calling the member functions of the UDT instance
+    purple.rollDownhill();
+    purple.repairs();
 
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 }
@@ -509,13 +503,18 @@ int main()
 {
     RecordingStudio soundbylaura;
     soundbylaura.hostEvent();
+    soundbylaura.recordAudio();
+    soundbylaura.sendInvoice();
 
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
 }
 
 {
     RecordingStudio::ControlRoom controlRoomB;
-    controlRoomB.prepareRoom();
+    controlRoomB.prepareRoom( true, true, 1, 5.0f); 
+    controlRoomB.bookRoom( true, 5);
+    controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
+    //Note for myself: Don't forget, functions that have arguments expect direct values, not type declarations.
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;    
 }
@@ -523,6 +522,8 @@ int main()
 {
     AudioInterface studio1810C;
     studio1810C.outputAudio();
+    studio1810C.receiveAudio();
+    studio1810C.displayLevels();
 
     std::cout << "The type of audio output is: " << (studio1810C.outputType) << "\n " << std::endl;
 }
@@ -530,6 +531,8 @@ int main()
 {
     StereoWidenerAudioPlugin SBLWide;
     SBLWide.captureAudio();
+    SBLWide.textInfo();
+    SBLWide.widenSignal();
 
     std::cout << "This knob color should be: " << (SBLWide.knobsColors) << "\n" << std::endl;
 }
@@ -537,6 +540,8 @@ int main()
 {
     StereoWidenerAudioPlugin::MixKnob mix;
     mix.getStateInformation(int (256), float (0.0f));
+    mix.prepareToPlay( 44100.0, 256.0f);
+    mix.isBypassed( false, false);
 
     std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
 }
@@ -544,6 +549,8 @@ int main()
 {
     GraphicalUserInterface darkMode;
     darkMode.displayInputLevel();
+    darkMode.displayAttenuation();
+    darkMode.parameterMod();
 
     std::cout << "In dark mode the background is: " << (darkMode.backgroundColor) << "\n" << std::endl;
 }
@@ -551,6 +558,8 @@ int main()
 {
     License EULA;
     EULA.copyProtection();
+    EULA.displayTextBody();
+    EULA.website();
 
     std::cout << "Is copy protection initiated? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
 }
@@ -558,6 +567,8 @@ int main()
 {
     Company SBL;
     SBL.signContract();
+    SBL.createPlugin();
+    SBL.authEnable();
 
     std::cout << "The number of employees creating a plugin is: " << (SBL.companyEmployees) << "\n" << std::endl;
 }
@@ -565,6 +576,8 @@ int main()
 {
     SignalProcessor comp;
     comp.savePreset();
+    comp.changeGainToDecibels( 0.0); 
+    comp.processSample( 1.1f);
 
     std::cout << "Your saved preset name is: " << (comp.type) << "\n" << std::endl;
 }
@@ -572,6 +585,8 @@ int main()
 {
    DSPEngine optimum;
     optimum.createChorus();
+    optimum.modifyGain();
+    optimum.enableOutput();
 
     std::cout << "Wet level: " << (optimum.wetLevel) << "\n" << std::endl;
 }
@@ -579,6 +594,8 @@ int main()
 {
     EqualizerAudioPlugin fancy;
     fancy.buildAType();
+    fancy.displayFreqLevelChange();
+    fancy.freqLevelChange();
 
     std::cout << "Made by: " << (fancy.company.companyName) << "\n" << std::endl;
 }
