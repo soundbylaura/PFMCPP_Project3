@@ -125,11 +125,6 @@ struct RecordingStudio
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
     };
 
-    // RecordingStudio::ControlRoom::ControlRoom()
-    // {
-    //    std::cout << "ControlRoom" << std::endl; 
-    // }
-
     void beginRecordingSession( ControlRoom controlRoomA );
     void startRateClock( bool hasGroupon = true);
     void closeRoom( ControlRoom controlRoomA, bool equipmentOff = true);
@@ -139,6 +134,11 @@ struct RecordingStudio
     void sendInvoice();
     void hostEvent();
 };
+
+RecordingStudio::ControlRoom::ControlRoom()
+{
+   std::cout << "ControlRoom" << std::endl; 
+}
 
 RecordingStudio::RecordingStudio()
 {
@@ -186,7 +186,10 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
 
 void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
-void RecordingStudio::hostEvent(){}
+void RecordingStudio::hostEvent()
+{
+    std::cout << "After the compiler allocates the space required by the type, it calls a special function called the constructor." << std::endl;
+}
 
 
 struct AudioInterface
@@ -248,6 +251,11 @@ struct StereoWidenerAudioPlugin
     float widenSignal();
 };
 
+StereoWidenerAudioPlugin::MixKnob::MixKnob()
+{
+    std::cout << "MixKnob" << std::endl;
+}
+
 StereoWidenerAudioPlugin::StereoWidenerAudioPlugin()
 {
     std::cout << "StereoWidenerAudioPlugin" << std::endl;
@@ -263,6 +271,7 @@ void StereoWidenerAudioPlugin::MixKnob::getStateInformation( int sizeInBytes, fl
     {
         inputLevel = 0.0f;
     }
+    std::cout << "Writing the name of the Type with (); creates the constructor." << std::endl;
 }
 void StereoWidenerAudioPlugin::MixKnob::prepareToPlay( double sampleRate, int samplesPerBlock)
 {
@@ -388,7 +397,7 @@ struct SignalProcessor
 
     double changeGainToDecibels( double gainLevel ); 
     float processSample( float inputSample ) { return inputSample * 2; }
-    void savePreset(){}
+    void savePreset();
 };
 
 SignalProcessor::SignalProcessor()
@@ -401,7 +410,7 @@ double SignalProcessor::changeGainToDecibels( double gainLevel )
     return std::pow(10.0, gainLevel / 20.0);
 }
 
-void savePreset()
+void SignalProcessor::savePreset()
 {
     std::cout << "Interestingly, I changed this from a float to a void so I could return text." << std::endl;
 }
@@ -489,19 +498,89 @@ paste your code below
 
 int main()
 {
-    // Example::main(); 
 
 {
-    Bicycle purple;              //3) instantiating a UDT named 'foo' in main()
-    purple.transportPerson();     //4) calling a member function of the UDT instance.
+    Bicycle purple; //I am instantiating a UDT named purple in the main()
+    purple.transportPerson(); //I am calling a member function of the UDT instance
 
-    //5) a std::cout statement accessing foo's member variable.
-    //It also demonstrates a 'ternary expression', which is syntactic shorthand for an 'if/else' expression
-    std::cout << "Is purple's member var 'rides' equal to 5? " << (purple.rides == 5 ? "Yes" : "No") << "\n";
-
-    return 0;
+    std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 }
-    
-    //add your code here: 
+
+{
+    RecordingStudio soundbylaura;
+    soundbylaura.hostEvent();
+
+    std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
+}
+
+{
+    RecordingStudio::ControlRoom controlRoomB;
+    controlRoomB.prepareRoom();
+
+    std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;    
+}
+
+{
+    AudioInterface studio1810C;
+    studio1810C.outputAudio();
+
+    std::cout << "The type of audio output is: " << (studio1810C.outputType) << "\n " << std::endl;
+}
+
+{
+    StereoWidenerAudioPlugin SBLWide;
+    SBLWide.captureAudio();
+
+    std::cout << "This knob color should be: " << (SBLWide.knobsColors) << "\n" << std::endl;
+}
+
+{
+    StereoWidenerAudioPlugin::MixKnob mix;
+    mix.getStateInformation(int (256), float (0.0f));
+
+    std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
+}
+
+{
+    GraphicalUserInterface darkMode;
+    darkMode.displayInputLevel();
+
+    std::cout << "In dark mode the background is: " << (darkMode.backgroundColor) << "\n" << std::endl;
+}
+
+{
+    License EULA;
+    EULA.copyProtection();
+
+    std::cout << "Is copy protection initiated? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
+}
+
+{
+    Company SBL;
+    SBL.signContract();
+
+    std::cout << "The number of employees creating a plugin is: " << (SBL.companyEmployees) << "\n" << std::endl;
+}
+
+{
+    SignalProcessor comp;
+    comp.savePreset();
+
+    std::cout << "Your saved preset name is: " << (comp.type) << "\n" << std::endl;
+}
+
+{
+   DSPEngine optimum;
+    optimum.createChorus();
+
+    std::cout << "Wet level: " << (optimum.wetLevel) << "\n" << std::endl;
+}
+
+{
+    EqualizerAudioPlugin fancy;
+    fancy.buildAType();
+
+    std::cout << "Made by: " << (fancy.company.companyName) << "\n" << std::endl;
+}
     std::cout << "good to go!" << std::endl;
 }
