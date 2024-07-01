@@ -501,28 +501,26 @@ int main()
 }
 
 {
-    RecordingStudio soundbylaura; //Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
+    RecordingStudio soundbylaura;//Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
+    RecordingStudio::ControlRoom controlRoomB;
+
+    controlRoomB.bookRoom( true, 5);
+    controlRoomB.prepareRoom( true, true, 1, 5.0f); 
+    controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
+    //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
+
+    std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;   
+
+    // soundbylaura.beginRecordingSession( controlRoomB);
+    // soundbylaura.startRateClock( true);
+    // soundbylaura.closeRoom( controlRoomB, true);
+    // soundbylaura.billClient( controlRoomB, 12, 3, 3);
+
     soundbylaura.hostEvent();
     soundbylaura.recordAudio();
     soundbylaura.sendInvoice();
 
-    // RecordingStudio::ControlRoom controlRoomA;
-    // soundbylaura.beginRecordingSession( controlRoomA);
-    // soundbylaura.startRateClock( true);
-    // soundbylaura.closeRoom( controlRoomA, true);
-    // soundbylaura.billClient( controlRoomA, 12, 3, 3);
-
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
-}
-
-{
-    RecordingStudio::ControlRoom controlRoomB;
-    controlRoomB.prepareRoom( true, true, 1, 5.0f); 
-    controlRoomB.bookRoom( true, 5);
-    controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
-    //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
-
-    std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;    
 }
 
 {
