@@ -125,7 +125,7 @@ struct RecordingStudio
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
     };
 
-    void beginRecordingSession( ControlRoom controlRoomA );
+    void beginRecordingSession( ControlRoom controlRoomA);
     void startRateClock( bool hasGroupon = true);
     void closeRoom( ControlRoom controlRoomA, bool equipmentOff = true);
     int billClient( ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
@@ -492,8 +492,8 @@ int main()
 {
 
 {
-    Bicycle purple; //Note for myself: I am instantiating a UDT named purple in the main()
-    purple.transportPerson(); //Note for myself:  I am calling the member functions of the UDT instance
+    Bicycle purple; //Note to self: I am instantiating a UDT named 'purple' in the main()
+    purple.transportPerson(); //Note to self:  I am calling the member functions of the UDT instance
     purple.rollDownhill();
     purple.repairs();
 
@@ -501,10 +501,16 @@ int main()
 }
 
 {
-    RecordingStudio soundbylaura;
+    RecordingStudio soundbylaura; //Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
     soundbylaura.hostEvent();
     soundbylaura.recordAudio();
     soundbylaura.sendInvoice();
+
+    // RecordingStudio::ControlRoom controlRoomA;
+    // soundbylaura.beginRecordingSession( controlRoomA);
+    // soundbylaura.startRateClock( true);
+    // soundbylaura.closeRoom( controlRoomA, true);
+    // soundbylaura.billClient( controlRoomA, 12, 3, 3);
 
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
 }
@@ -514,7 +520,7 @@ int main()
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
     controlRoomB.bookRoom( true, 5);
     controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
-    //Note for myself: Don't forget, functions that have arguments expect direct values, not type declarations.
+    //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;    
 }
@@ -533,6 +539,10 @@ int main()
     SBLWide.captureAudio();
     SBLWide.textInfo();
     SBLWide.widenSignal();
+
+    // void increaseWetness( MixKnob increase);
+    // void decreaseWetness( MixKnob decrease);
+    // void smartMute( int audioInput = 1, float audioOutput = 1.1f);
 
     std::cout << "This knob color should be: " << (SBLWide.knobsColors) << "\n" << std::endl;
 }
@@ -592,12 +602,12 @@ int main()
 }
 
 {
-    EqualizerAudioPlugin fancy;
-    fancy.buildAType();
-    fancy.displayFreqLevelChange();
-    fancy.freqLevelChange();
+    EqualizerAudioPlugin fancEQ;
+    fancEQ.buildAType();
+    fancEQ.displayFreqLevelChange();
+    fancEQ.freqLevelChange();
 
-    std::cout << "Made by: " << (fancy.company.companyName) << "\n" << std::endl;
+    std::cout << "Made by: " << (fancEQ.company.companyName) << "\n" << std::endl;
 }
     std::cout << "good to go!" << std::endl;
 }
