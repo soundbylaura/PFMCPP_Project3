@@ -262,7 +262,7 @@ struct StereoWidenerAudioPlugin
         std::string label = "Mix";
         int sliderHeight = 10; 
         int sliderWidth = 2;
-        int ticksOnSlider = 50;
+        int ticksOnSlider;
         std::string sliderColor = "Black";
 
         void getStateInformation( int sizeInBytes, float inputLevel);
@@ -287,6 +287,23 @@ StereoWidenerAudioPlugin::MixKnob::MixKnob()
 StereoWidenerAudioPlugin::StereoWidenerAudioPlugin()
 {
     std::cout << "StereoWidenerAudioPlugin" << std::endl;
+}
+//paste that shit here
+
+void StereoWidenerAudioPlugin::increaseWetness( MixKnob increase)
+{
+    increase.ticksOnSlider = 50;
+}
+
+void StereoWidenerAudioPlugin::decreaseWetness( MixKnob decrease)
+{
+    decrease.ticksOnSlider = 10;
+}
+
+void StereoWidenerAudioPlugin::smartMute( int audioInput, float audioOutput)
+{
+    audioInput = 2;
+    audioOutput = 5.1f;
 }
 
 void StereoWidenerAudioPlugin::MixKnob::getStateInformation( int sizeInBytes, float inputLevel)
@@ -519,18 +536,17 @@ paste your code below
 int main()
 {
 
-{
+
     Bicycle purple; //Note to self: I am instantiating a UDT named 'purple' in the main()
     purple.transportPerson(); //Note to self:  I am calling the member functions of the UDT instance
     purple.rollDownhill();
     purple.repairs();
 
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
-}
 
-{
+
     RecordingStudio soundbylaura;//Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
-    RecordingStudio::ControlRoom controlRoomB;
+    RecordingStudio::ControlRoom controlRoomB;//Note to self: Creates an instance of the nested RecordingStudio::ControlRoom struct named controlRoomB.
 
     controlRoomB.bookRoom( true, 5);
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
@@ -549,91 +565,82 @@ int main()
     soundbylaura.sendInvoice();
 
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
-}
 
-{
+    
     AudioInterface studio1810C;
     studio1810C.outputAudio();
     studio1810C.receiveAudio();
     studio1810C.displayLevels();
 
     std::cout << "The type of audio output is: " << (studio1810C.outputType) << "\n " << std::endl;
-}
 
-{
+    
     StereoWidenerAudioPlugin SBLWide;
+    StereoWidenerAudioPlugin::MixKnob mix;
+    
     SBLWide.captureAudio();
     SBLWide.textInfo();
     SBLWide.widenSignal();
 
-    // void increaseWetness( MixKnob increase);
-    // void decreaseWetness( MixKnob decrease);
-    // void smartMute( int audioInput = 1, float audioOutput = 1.1f);
+    SBLWide.increaseWetness( mix);
+    SBLWide.decreaseWetness( mix);
+    SBLWide.smartMute( 1, 1.1f);
 
     std::cout << "This knob color should be: " << (SBLWide.knobsColors) << "\n" << std::endl;
-}
 
-{
-    StereoWidenerAudioPlugin::MixKnob mix;
     mix.getStateInformation(int (256), float (0.0f));
     mix.prepareToPlay( 44100.0, 256.0f);
     mix.isBypassed( false, false);
 
     std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
-}
 
-{
+    
     GraphicalUserInterface darkMode;
     darkMode.displayInputLevel();
     darkMode.displayAttenuation();
     darkMode.parameterMod();
 
     std::cout << "In dark mode the background is: " << (darkMode.backgroundColor) << "\n" << std::endl;
-}
 
-{
+    
     License EULA;
     EULA.copyProtection();
     EULA.displayTextBody();
     EULA.website();
 
     std::cout << "Is copy protection initiated? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
-}
 
-{
+    
     Company SBL;
     SBL.signContract();
     SBL.createPlugin();
     SBL.authEnable();
 
     std::cout << "The number of employees creating a plugin is: " << (SBL.companyEmployees) << "\n" << std::endl;
-}
 
-{
+    
     SignalProcessor comp;
     comp.savePreset();
     comp.changeGainToDecibels( 0.0); 
     comp.processSample( 1.1f);
 
     std::cout << "Your saved preset name is: " << (comp.type) << "\n" << std::endl;
-}
 
-{
-   DSPEngine optimum;
+    
+    DSPEngine optimum;
     optimum.createChorus();
     optimum.modifyGain();
     optimum.enableOutput();
 
     std::cout << "Wet level: " << (optimum.wetLevel) << "\n" << std::endl;
-}
 
-{
+    
     EqualizerAudioPlugin fancEQ;
     fancEQ.buildAType();
     fancEQ.displayFreqLevelChange();
     fancEQ.freqLevelChange();
 
     std::cout << "Made by: " << (fancEQ.company.companyName) << "\n" << std::endl;
-}
+
     std::cout << "good to go!" << std::endl;
 }
