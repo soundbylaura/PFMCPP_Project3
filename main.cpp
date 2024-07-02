@@ -110,6 +110,7 @@ struct RecordingStudio
     float expenseCatering = 300.0f;
     float expenseInsurance = 1100.0f;
     int employees = 8;
+    int discount;
 
     struct ControlRoom
     {
@@ -126,7 +127,7 @@ struct RecordingStudio
     };
 
     void beginRecordingSession( ControlRoom controlRoomA);
-    void startRateClock( bool hasGroupon = true);
+    void startRateClock( bool hasGroupon);
     void closeRoom( ControlRoom controlRoomA, bool equipmentOff = true);
     int billClient( ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
 
@@ -143,6 +144,33 @@ RecordingStudio::ControlRoom::ControlRoom()
 RecordingStudio::RecordingStudio()
 {
     std::cout << "RecordingStudio" << std::endl;
+}
+
+void RecordingStudio::beginRecordingSession( ControlRoom controlRoomA)
+{
+    controlRoomA.isBooked = false;
+}
+
+void RecordingStudio::startRateClock( bool hasGroupon)
+{
+    if( hasGroupon == false )
+    discount = 0;  
+}
+
+void RecordingStudio::closeRoom( ControlRoom controlRoomA, bool equipmentOff)
+{
+    if( equipmentOff == true )
+    controlRoomA.isBooked = false;
+}
+
+int RecordingStudio::billClient(ControlRoom controlRoomA, int hoursUsed, int tapesUsed, int woofersBlown)
+{
+    hoursUsed = 4;
+    tapesUsed = 4;
+    woofersBlown = 4;
+    controlRoomA.isBooked = false;
+
+    return hoursUsed + tapesUsed + woofersBlown;
 }
 
 void RecordingStudio::ControlRoom::bookRoom( bool isRoomBooked, int numberOfTotalClients)
@@ -511,10 +539,10 @@ int main()
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;   
 
-    // soundbylaura.beginRecordingSession( controlRoomB);
-    // soundbylaura.startRateClock( true);
-    // soundbylaura.closeRoom( controlRoomB, true);
-    // soundbylaura.billClient( controlRoomB, 12, 3, 3);
+    soundbylaura.beginRecordingSession( controlRoomB);
+    soundbylaura.startRateClock( true);
+    soundbylaura.closeRoom( controlRoomB, true);
+    soundbylaura.billClient( controlRoomB, 12, 3, 3);
 
     soundbylaura.hostEvent();
     soundbylaura.recordAudio();
