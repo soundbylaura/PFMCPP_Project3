@@ -85,7 +85,7 @@ struct Bicycle
 
     void transportPerson();
     void rollDownhill();
-    void repairs();
+    void makeRepairs();
 };
 
 Bicycle::Bicycle()
@@ -99,7 +99,7 @@ void Bicycle::transportPerson()
 }
 
 void Bicycle::rollDownhill(){}
-void Bicycle::repairs(){}
+void Bicycle::makeRepairs(){}
 
 
 struct RecordingStudio
@@ -267,15 +267,15 @@ struct StereoWidenerAudioPlugin
 
         void getStateInformation( int sizeInBytes, float inputLevel);
         void prepareToPlay( double sampleRate, int samplesPerBlock);
-        bool isBypassed( bool customBypassButton, bool nativeBypassButton);
+        bool getBypassState( bool customBypassButton, bool nativeBypassButton);
     };
 
     void increaseWetness( MixKnob increase);
     void decreaseWetness( MixKnob decrease);
-    void smartMute( int audioInput = 1, float audioOutput = 1.1f);
+    void engageSmartMute( int audioInput = 1, float audioOutput = 1.1f);
 
     void captureAudio();
-    char textInfo();
+    char addTextInfo();
     float widenSignal();
 };
 
@@ -288,7 +288,6 @@ StereoWidenerAudioPlugin::StereoWidenerAudioPlugin()
 {
     std::cout << "StereoWidenerAudioPlugin" << std::endl;
 }
-//paste that shit here
 
 void StereoWidenerAudioPlugin::increaseWetness( MixKnob increase)
 {
@@ -300,7 +299,7 @@ void StereoWidenerAudioPlugin::decreaseWetness( MixKnob decrease)
     decrease.ticksOnSlider = 10;
 }
 
-void StereoWidenerAudioPlugin::smartMute( int audioInput, float audioOutput)
+void StereoWidenerAudioPlugin::engageSmartMute( int audioInput, float audioOutput)
 {
     audioInput = 2;
     audioOutput = 5.1f;
@@ -329,7 +328,7 @@ void StereoWidenerAudioPlugin::MixKnob::prepareToPlay( double sampleRate, int sa
         sampleRate = 0;
     }
 }
-bool StereoWidenerAudioPlugin::MixKnob::isBypassed( bool customBypassButton, bool nativeBypassButton)
+bool StereoWidenerAudioPlugin::MixKnob::getBypassState( bool customBypassButton, bool nativeBypassButton)
 {
     if( customBypassButton == true )
     {
@@ -346,7 +345,7 @@ void StereoWidenerAudioPlugin::captureAudio()
 {
     std::cout << "Constructors don't have a return type, not even VOID." << std::endl;
 }
-char StereoWidenerAudioPlugin::textInfo(){ return 'g'; }
+char StereoWidenerAudioPlugin::addTextInfo(){ return 'g'; }
 float StereoWidenerAudioPlugin::widenSignal() { return 100.0f; }
 
 
@@ -359,9 +358,9 @@ struct GraphicalUserInterface
     std::string dialName = "Freq"; 
     std::string backgroundColor = "Purple";
 
-    void displayInputLevel(); 
-    float displayAttenuation();
-    float parameterMod();
+    void showDisplayInputLevel(); 
+    float showDisplayAttenuation();
+    float addParameterMod();
 };
 
 GraphicalUserInterface::GraphicalUserInterface()
@@ -369,12 +368,12 @@ GraphicalUserInterface::GraphicalUserInterface()
     std::cout << "GraphicalUserInterface" << std::endl;
 }
 
-void GraphicalUserInterface::displayInputLevel()
+void GraphicalUserInterface::showDisplayInputLevel()
 { 
     std::cout << "The constructor name is the same name as the UDT." << std::endl;
 }
-float GraphicalUserInterface::displayAttenuation() { return 93.5f; }
-float GraphicalUserInterface::parameterMod() { return 44.44f; }
+float GraphicalUserInterface::showDisplayAttenuation() { return 93.5f; }
+float GraphicalUserInterface::addParameterMod() { return 44.44f; }
 
 
 struct License
@@ -387,8 +386,8 @@ struct License
     bool isExecuted = true;
 
     char displayTextBody();
-    char website();
-    void copyProtection();
+    char designWebsite();
+    void enableCopyProtection();
 };
 
 License::License()
@@ -397,8 +396,8 @@ License::License()
 }
 
 char License::displayTextBody() { return 't'; }
-char License::website() { return 'w'; }
-void License::copyProtection()
+char License::designWebsite() { return 'w'; }
+void License::enableCopyProtection()
 {
     std::cout << "If no constructor is written, the compiler uses the Implicit Constructor." << std::endl;
 }
@@ -482,7 +481,7 @@ DSPEngine::DSPEngine()
 
 void DSPEngine::createChorus()
 {
-    std::cout << "Using a constructor prevents member variables from returning garbage values." << std::endl;
+    std::cout << "Don't forget to define your functions after you declare them. Use verbs (not nouns) for functions." << std::endl;
 }
 float DSPEngine::modifyGain() { return (gainInputLevel + gainOutputLevel); }
 bool DSPEngine::enableOutput() { return true; }
@@ -540,7 +539,7 @@ int main()
     Bicycle purple; //Note to self: I am instantiating a UDT named 'purple' in the main()
     purple.transportPerson(); //Note to self:  I am calling the member functions of the UDT instance
     purple.rollDownhill();
-    purple.repairs();
+    purple.makeRepairs();
 
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 
@@ -579,36 +578,36 @@ int main()
     StereoWidenerAudioPlugin::MixKnob mix;
     
     SBLWide.captureAudio();
-    SBLWide.textInfo();
+    SBLWide.addTextInfo();
     SBLWide.widenSignal();
 
     SBLWide.increaseWetness( mix);
     SBLWide.decreaseWetness( mix);
-    SBLWide.smartMute( 1, 1.1f);
+    SBLWide.engageSmartMute( 1, 1.1f);
 
     std::cout << "This knob color should be: " << (SBLWide.knobsColors) << "\n" << std::endl;
 
     mix.getStateInformation(int (256), float (0.0f));
     mix.prepareToPlay( 44100.0, 256.0f);
-    mix.isBypassed( false, false);
+    mix.getBypassState( false, false);
 
     std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
 
     
     GraphicalUserInterface darkMode;
-    darkMode.displayInputLevel();
-    darkMode.displayAttenuation();
-    darkMode.parameterMod();
+    darkMode.showDisplayInputLevel();
+    darkMode.showDisplayAttenuation();
+    darkMode.addParameterMod();
 
     std::cout << "In dark mode the background is: " << (darkMode.backgroundColor) << "\n" << std::endl;
 
     
     License EULA;
-    EULA.copyProtection();
+    EULA.enableCopyProtection();
     EULA.displayTextBody();
-    EULA.website();
+    EULA.designWebsite();
 
-    std::cout << "Is copy protection initiated? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
+    std::cout << "Is copy protection enabled? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
 
     
     Company SBL;
