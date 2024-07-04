@@ -154,13 +154,13 @@ void RecordingStudio::beginRecordingSession( ControlRoom controlRoomA)
 void RecordingStudio::startRateClock( bool hasGroupon)
 {
     if( hasGroupon == false )
-    discount = 0;  
+        discount = 0;  
 }
 
 void RecordingStudio::closeRoom( ControlRoom controlRoomA, bool equipmentOff)
 {
     if( equipmentOff == true )
-    controlRoomA.isBooked = false;
+        controlRoomA.isBooked = false;
 }
 
 int RecordingStudio::billClient(ControlRoom controlRoomA, int hoursUsed, int tapesUsed, int woofersBlown)
