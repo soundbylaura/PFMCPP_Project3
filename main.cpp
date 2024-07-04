@@ -16,7 +16,9 @@
  */
 
 #include <iostream>
-namespace Example 
+#include <cmath>
+namespace Example
+
 {
 struct UDT  
 {
@@ -44,16 +46,19 @@ int main()
 
 struct Bicycle
 {
-    Bicycle();
-    int numGears = 18;
-    float tireAirPressure = 70.0f;
-    std::string handlebar = "Flat";
-    int bottleHolders = 3;
-    int rides = 5;
+    Bicycle(); 
+    int numGears; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
+    float tireAirPressure { 70.0f }; //a member variable that IS initialized in-class
+    std::string handlebar = "Flat"; //a member variable that IS initialized in-class
+    int bottleHolders = 2; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
+    int rides = { 5 }; //a member variable that IS initialized in-class
 
     void transportPerson();
     void rollDownhill();
-    void makeRepairs();
+    void makeRepairs()
+    {
+        std::cout << "Make repairs after this many rides: " << rides << std::endl;
+    }
 };
 
 Bicycle::Bicycle()
@@ -66,8 +71,11 @@ void Bicycle::transportPerson()
     std::cout << "A constructor's job is to set up the initial values of the member variables. " <<std::endl; 
 }
 
-void Bicycle::rollDownhill(){}
-void Bicycle::makeRepairs(){}
+void Bicycle::rollDownhill()
+{
+    std::cout << "Roll downhill initial ppi: " << tireAirPressure << ". Required bottle holders: " << bottleHolders << std::endl; //making a member function use initialized member variables via std::cout
+}
+// void Bicycle::makeRepairs(){}
 
 
 struct RecordingStudio
@@ -75,9 +83,9 @@ struct RecordingStudio
     RecordingStudio();
     int microphones = 28;
     int numOfClients = 33;
-    float expenseCatering = 300.0f;
+    float expenseCatering { 300.0f };
     float expenseInsurance = 1100.0f;
-    int employees = 8;
+    int employees {8};
     int discount;
 
     struct ControlRoom
@@ -99,7 +107,10 @@ struct RecordingStudio
     void closeRoom( ControlRoom controlRoomA, bool equipmentOff = true);
     int billClient( ControlRoom controlRoomA, int hoursUsed = 12, int tapesUsed = 3, int woofersBlown = 3);
 
-    void recordAudio();
+    void recordAudio()
+    {
+         std::cout << "Max number of mics allowed: " << microphones << std::endl;   
+    }
     void sendInvoice();
     void hostEvent();
 };
@@ -180,7 +191,7 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     return ( overtimeRate * numberOfActualHours) + reelsUsed;  
 }
 
-void RecordingStudio::recordAudio(){}
+// void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent()
 {
@@ -191,38 +202,46 @@ void RecordingStudio::hostEvent()
 struct AudioInterface
 {
     AudioInterface();
-    int audioInputs = 16;
+    int audioInputs;
     std::string inputType = "XLR";
     std::string enclosureMaterial = "Metal";
     std::string outputType = "XLR";
     std::string inputsLocation = "Front";
 
-    void receiveAudio();
+    void receiveAudio()
+    {
+        std::cout << "Method 1: init member variabies inside the contstructor body." << std::endl;
+    }
     float displayLevels();
     void outputAudio();
+    void getNumInputs();
 };
 
-AudioInterface::AudioInterface()
+AudioInterface::AudioInterface() : audioInputs(16)
 {
-    std::cout << "AudioInterface" << std::endl;
+    std::cout << "Audio Interface" << std::endl;
 }
 
-void AudioInterface::receiveAudio(){}
+// void AudioInterface::receiveAudio(){}
 float AudioInterface::displayLevels() { return 2.2f; }
 void AudioInterface::outputAudio()
 {
     std::cout << "Primitives do not have built-in constructors." << std::endl;
+}
+void AudioInterface::getNumInputs()
+{
+    std::cout << "Audio inputs: " << audioInputs << std::endl;
 }
 
 
 struct StereoWidenerAudioPlugin
 {
     StereoWidenerAudioPlugin();
-    int GUIElements = 2;
+    int GUIElements;
     std::string knobsColors = "Black";
-    float memoryAllocated = 64.0f;
-    int fontSizeToolTips = 32;
-    float knobsLocation = 0;
+    float memoryAllocated { 64.0f };
+    int fontSizeToolTips;
+    float knobsLocation { 0.0f };
 
     struct MixKnob
     {
@@ -236,6 +255,7 @@ struct StereoWidenerAudioPlugin
         void getStateInformation( int sizeInBytes, float inputLevel);
         void prepareToPlay( double sampleRate, int samplesPerBlock);
         bool getBypassState( bool customBypassButton, bool nativeBypassButton);
+        void calculateTickMarks();
     };
 
     void increaseWetness( MixKnob increase);
@@ -247,12 +267,12 @@ struct StereoWidenerAudioPlugin
     float widenSignal();
 };
 
-StereoWidenerAudioPlugin::MixKnob::MixKnob()
+StereoWidenerAudioPlugin::MixKnob::MixKnob() : ticksOnSlider(80)
 {
     std::cout << "MixKnob" << std::endl;
 }
 
-StereoWidenerAudioPlugin::StereoWidenerAudioPlugin()
+StereoWidenerAudioPlugin::StereoWidenerAudioPlugin() : fontSizeToolTips(18)
 {
     std::cout << "StereoWidenerAudioPlugin" << std::endl;
 }
@@ -313,25 +333,29 @@ void StereoWidenerAudioPlugin::captureAudio()
 {
     std::cout << "Constructors don't have a return type, not even VOID." << std::endl;
 }
-char StereoWidenerAudioPlugin::addTextInfo(){ return 'g'; }
+char StereoWidenerAudioPlugin::addTextInfo() { return 't'; }
 float StereoWidenerAudioPlugin::widenSignal() { return 100.0f; }
+void StereoWidenerAudioPlugin::MixKnob::calculateTickMarks()
+{
+    std::cout << "Ticks number: " << ticksOnSlider << std::endl;
+}
 
 
 struct GraphicalUserInterface
 {
     GraphicalUserInterface();
-    int GUIWidth = 10;
-    int GUIHeight = 10;
+    int GUIWidth;
+    int GUIHeight;
     int sliderWidth = 40;
     std::string dialName = "Freq"; 
     std::string backgroundColor = "Purple";
 
     void showDisplayInputLevel(); 
-    float showDisplayAttenuation();
+    int showDisplayAttenuation();
     float addParameterMod();
 };
 
-GraphicalUserInterface::GraphicalUserInterface()
+GraphicalUserInterface::GraphicalUserInterface() : GUIWidth(50), GUIHeight(50)
 {
     std::cout << "GraphicalUserInterface" << std::endl;
 }
@@ -340,7 +364,11 @@ void GraphicalUserInterface::showDisplayInputLevel()
 { 
     std::cout << "The constructor name is the same name as the UDT." << std::endl;
 }
-float GraphicalUserInterface::showDisplayAttenuation() { return 93.5f; }
+int GraphicalUserInterface::showDisplayAttenuation()
+{
+    std::cout << "Display changed to: " << GUIWidth << " x " << GUIHeight << std::endl;
+    return 34;
+}
 float GraphicalUserInterface::addParameterMod() { return 44.44f; }
 
 
@@ -348,10 +376,10 @@ struct License
 {
     License();
     std::string bodyText = "You must be this tall to ride this ride.";
-    int bodyTextFontSize = 18;
+    int bodyTextFontSize { 18 };
     std::string fileFormat = "PDF";
     std::string bodyTextColor = "black";
-    bool isExecuted = true;
+    bool isExecuted { true };
 
     char displayTextBody();
     char designWebsite();
@@ -368,6 +396,7 @@ char License::designWebsite() { return 'w'; }
 void License::enableCopyProtection()
 {
     std::cout << "If no constructor is written, the compiler uses the Implicit Constructor." << std::endl;
+    std::cout << "The correct font size is: " << bodyTextFontSize << std::endl;
 }
 
 
@@ -376,7 +405,7 @@ struct Company
     Company();
     std::string companyName = "SBL Plugins";
     std::string companyLocation = "Atlanta";
-    int companyEmployees = 1;
+    int companyEmployees;
     float companyIncome = 0.0f;
     float equipmentCost = 200.25f;
 
@@ -385,13 +414,16 @@ struct Company
     void signContract();
 };
 
-Company::Company()
+Company::Company() : companyEmployees(1)
 {
     std::cout << "Company" << std::endl;
 }
 
 void Company::createPlugin(){}
-void Company::authEnable(){}
+void Company::authEnable()
+{
+    std::cout << "Number of employees authorized: " << companyEmployees << std::endl;
+}
 void Company::signContract()
 {
     std::cout << "We write constructors with (); to indicate it's a declaration." << std::endl;
@@ -401,18 +433,20 @@ void Company::signContract()
 struct SignalProcessor
 {
     SignalProcessor();
-    float numSamples = 256.0f;
-    int numChannels = 2;
+    float numSamples { 256.0f };
+    int numChannels;
     std::string type = "Unknown";
     float numBuffer = 2.2f;
-    int program = 4;
+    int program;
 
-    double changeGainToDecibels( double gainLevel ); 
+    double changeGainToDecibels( double gainLevel );
     float processSample( float inputSample ) { return inputSample * 2; }
     void savePreset();
+    void getNumSamples();
+
 };
 
-SignalProcessor::SignalProcessor()
+SignalProcessor::SignalProcessor() : program(4)
 {
     std::cout << "SignalProcessor" << std::endl;
 }
@@ -427,22 +461,28 @@ void SignalProcessor::savePreset()
     std::cout << "Step-in is a function in X-code to see how your code changes as it runs." << std::endl;
 }
 
+void SignalProcessor::getNumSamples()
+{
+    std::cout << "Number of samples available: " << numSamples << std::endl;
+}
+
 
 struct DSPEngine
 {
     DSPEngine();
-    float gainInputLevel = 0.0f;
+    float gainInputLevel { 0.0f} ;
     float gainRampDuration = 3482.0f;
-    float wetLevel = 33.1f;
+    float wetLevel;
     std::string effect = "Chorus";
-    float gainOutputLevel = -6.4f;
+    float gainOutputLevel { -6.4f} ;
 
     void createChorus();
     float modifyGain();
     bool enableOutput();
+    float showGainOutputLevel();
 };
 
-DSPEngine::DSPEngine()
+DSPEngine::DSPEngine() : wetLevel(100)
 {
     std::cout << "DSPEngine" << std::endl;
 }
@@ -453,11 +493,17 @@ void DSPEngine::createChorus()
 }
 float DSPEngine::modifyGain() { return (gainInputLevel + gainOutputLevel); }
 bool DSPEngine::enableOutput() { return true; }
+float DSPEngine::showGainOutputLevel()
+{
+    std::cout << "Gain out: " << gainOutputLevel << std::endl;
+    return gainOutputLevel;
+}
 
 
 struct EqualizerAudioPlugin
 {
     EqualizerAudioPlugin();
+    int IDnumber;
     GraphicalUserInterface GUI;
     License license;
     Company company;
@@ -467,9 +513,10 @@ struct EqualizerAudioPlugin
     float displayFreqLevelChange();
     float freqLevelChange();
     void buildAType();
+    void addIdentification();
 };
 
-EqualizerAudioPlugin::EqualizerAudioPlugin()
+EqualizerAudioPlugin::EqualizerAudioPlugin() : IDnumber(8)
 {
     std::cout << "EqualizerAudioPlugin" << std::endl;
 }
@@ -479,6 +526,10 @@ float EqualizerAudioPlugin::freqLevelChange() { return 5.0f; }
 void EqualizerAudioPlugin::buildAType()
 {
     std::cout << "A constructor is a Special Member Function that every UDT has." << std::endl;
+}
+void EqualizerAudioPlugin::addIdentification()
+{
+    std::cout << "Registration number: " << IDnumber << std::endl;
 }
   
 /*
@@ -538,6 +589,7 @@ int main()
     studio1810C.outputAudio();
     studio1810C.receiveAudio();
     studio1810C.displayLevels();
+    studio1810C.getNumInputs();
 
     std::cout << "The type of audio output is: " << (studio1810C.outputType) << "\n " << std::endl;
 
@@ -558,6 +610,7 @@ int main()
     mix.getStateInformation(int (256), float (0.0f));
     mix.prepareToPlay( 44100.0, 256.0f);
     mix.getBypassState( false, false);
+    mix.calculateTickMarks();
 
     std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
 
@@ -590,6 +643,7 @@ int main()
     comp.savePreset();
     comp.changeGainToDecibels( 0.0); 
     comp.processSample( 1.1f);
+    comp.getNumSamples();
 
     std::cout << "Your saved preset name is: " << (comp.type) << "\n" << std::endl;
 
@@ -598,6 +652,7 @@ int main()
     optimum.createChorus();
     optimum.modifyGain();
     optimum.enableOutput();
+    optimum.showGainOutputLevel();
 
     std::cout << "Wet level: " << (optimum.wetLevel) << "\n" << std::endl;
 
@@ -606,6 +661,7 @@ int main()
     fancEQ.buildAType();
     fancEQ.displayFreqLevelChange();
     fancEQ.freqLevelChange();
+    fancEQ.addIdentification();
 
     std::cout << "Made by: " << (fancEQ.company.companyName) << "\n" << std::endl;
 
