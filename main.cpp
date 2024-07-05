@@ -79,7 +79,7 @@ struct Bicycle
     int numGears; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
     float tireAirPressure { 70.0f }; //a member variable that IS initialized in-class
     std::string handlebar = "Flat"; //a member variable that IS initialized in-class
-    int bottleHolders = 2; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
+    int bottleHolders = 2;
     int rides = { 5 }; //a member variable that IS initialized in-class
 
     void transportPerson();
@@ -266,7 +266,7 @@ void AudioInterface::getNumInputs()
 struct StereoWidenerAudioPlugin
 {
     StereoWidenerAudioPlugin();
-    int GUIElements;
+    int interfaceElements;
     std::string knobsColors = "Black";
     float memoryAllocated { 64.0f };
     int fontSizeToolTips;
@@ -373,8 +373,8 @@ void StereoWidenerAudioPlugin::MixKnob::calculateTickMarks()
 struct GraphicalUserInterface
 {
     GraphicalUserInterface();
-    int GUIWidth;
-    int GUIHeight;
+    int windowWidth;
+    int windowHeight;
     int sliderWidth = 40;
     std::string dialName = "Freq"; 
     std::string backgroundColor = "Purple";
@@ -384,7 +384,7 @@ struct GraphicalUserInterface
     float addParameterMod();
 };
 
-GraphicalUserInterface::GraphicalUserInterface() : GUIWidth(50), GUIHeight(50)
+GraphicalUserInterface::GraphicalUserInterface() : windowWidth(50), windowHeight(50)
 {
     std::cout << "GraphicalUserInterface" << std::endl;
 }
@@ -395,7 +395,7 @@ void GraphicalUserInterface::showDisplayInputLevel()
 }
 int GraphicalUserInterface::showDisplayAttenuation()
 {
-    std::cout << "Display changed to: " << GUIWidth << " x " << GUIHeight << std::endl;
+    std::cout << "Display changed to: " << windowWidth << " x " << windowHeight << std::endl;
     return 34;
 }
 float GraphicalUserInterface::addParameterMod() { return 44.44f; }
@@ -533,7 +533,7 @@ struct EqualizerAudioPlugin
 {
     EqualizerAudioPlugin();
     int IDnumber;
-    GraphicalUserInterface GUI;
+    GraphicalUserInterface interface;
     License license;
     Company company;
     SignalProcessor signalProcessor;
