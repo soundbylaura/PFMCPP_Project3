@@ -82,6 +82,9 @@ struct Bicycle
     int bottleHolders = 2;
     int rides = { 5 }; //a member variable that IS initialized in-class
 
+    
+    void beginRideToWork(); //NTS: new member function added for S&L task
+    void beginRideToHome();  //NTS: new member function added for S&L task
     void transportPerson();
     void rollDownhill();
     void makeRepairs()
@@ -129,6 +132,8 @@ struct RecordingStudio
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
+        int addOutboardGear(); //NTS: new member function added for S&L task
+
     };
 
     void beginRecordingSession( ControlRoom controlRoomA);
@@ -142,6 +147,8 @@ struct RecordingStudio
     }
     void sendInvoice();
     void hostEvent();
+    void repairBrokenEquipment(); //NTS: new member function added for S&L task
+    void deliverMasterTapes(); //NTS: new member function added for S&L task
 };
 
 RecordingStudio::ControlRoom::ControlRoom()
@@ -220,7 +227,6 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     return ( overtimeRate * numberOfActualHours) + reelsUsed;  
 }
 
-// void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent()
 {
@@ -244,6 +250,8 @@ struct AudioInterface
     float displayLevels();
     void outputAudio();
     void getNumInputs();
+    bool turnOnPhantomPower(); //NTS: new member function added for S&L task
+    bool turnOnLineInput(); //NTS: new member function added for S&L task
 };
 
 AudioInterface::AudioInterface() : audioInputs(16)
@@ -251,7 +259,6 @@ AudioInterface::AudioInterface() : audioInputs(16)
     std::cout << "Audio Interface" << std::endl;
 }
 
-// void AudioInterface::receiveAudio(){}
 float AudioInterface::displayLevels() { return 2.2f; }
 void AudioInterface::outputAudio()
 {
@@ -285,6 +292,9 @@ struct StereoWidenerAudioPlugin
         void prepareToPlay( double sampleRate, int samplesPerBlock);
         bool getBypassState( bool customBypassButton, bool nativeBypassButton);
         void calculateTickMarks();
+        void changeKnobColor(); //NTS: new member function added for S&L task
+        bool useSaturation(); //NTS: new member function added for S&L task
+
     };
 
     void increaseWetness( MixKnob increase);
@@ -294,6 +304,9 @@ struct StereoWidenerAudioPlugin
     void captureAudio();
     char addTextInfo();
     float widenSignal();
+    int showPluginWindow(); //NTS: new member function added for S&L task
+    int getPluginWindowSize(); //NTS: new member function added for S&L task
+
 };
 
 StereoWidenerAudioPlugin::MixKnob::MixKnob() : ticksOnSlider(80)
@@ -382,6 +395,9 @@ struct GraphicalUserInterface
     void showDisplayInputLevel(); 
     int showDisplayAttenuation();
     float addParameterMod();
+    int increaseSliderWidth(); //NTS: new member function added for S&L task
+    int decreaseFontSize();  //NTS: new member function added for S&L task
+    
 };
 
 GraphicalUserInterface::GraphicalUserInterface() : windowWidth(50), windowHeight(50)
@@ -413,6 +429,7 @@ struct License
     char displayTextBody();
     char designWebsite();
     void enableCopyProtection();
+    void changeTextBodySize(); //NTS: new member function added for S&L task
 };
 
 License::License()
@@ -441,6 +458,8 @@ struct Company
     void createPlugin();
     void authEnable();
     void signContract();
+    int hireNewEngineers(); //NTS: new member function added for S&L task
+    float buyNewVideoMonitor(); //NTS: new member function added for S&L task
 };
 
 Company::Company() : companyEmployees(1)
@@ -463,15 +482,17 @@ struct SignalProcessor
 {
     SignalProcessor();
     float numSamples { 256.0f };
-    int numChannels;
+    int numChannels = 2;
     std::string type = "Unknown";
     float numBuffer = 2.2f;
-    int program;
+    int program = 2;
 
     double changeGainToDecibels( double gainLevel );
     float processSample( float inputSample ) { return inputSample * 2; }
     void savePreset();
     void getNumSamples();
+    int getNumChannels();
+    void startProgram();
 
 };
 
@@ -501,7 +522,7 @@ struct DSPEngine
     DSPEngine();
     float gainInputLevel { 0.0f} ;
     float gainRampDuration = 3482.0f;
-    float wetLevel;
+    float wetLevel = 0.0f;
     std::string effect = "Chorus";
     float gainOutputLevel { -6.4f} ;
 
@@ -509,6 +530,8 @@ struct DSPEngine
     float modifyGain();
     bool enableOutput();
     float showGainOutputLevel();
+    float increaseWetLevel();
+    float decreaseGainRampDuration();
 };
 
 DSPEngine::DSPEngine() : wetLevel(100)
