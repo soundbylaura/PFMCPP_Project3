@@ -140,7 +140,7 @@ struct RecordingStudio
     float expenseCatering { 300.0f };
     float expenseInsurance = 1100.0f;
     int employees {8};
-    int discount;
+    int discount = 10;
 
     struct ControlRoom
     {
@@ -154,8 +154,13 @@ struct RecordingStudio
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
-        int addOutboardGear(); //NTS: new member function added for S&L task
+        int addOutboardGearCharge( bool isBooked = true, int gearCharge = 20); //NTS: new member function added for S&L task
+    };
 
+    struct OutboardGear
+    {
+        OutboardGear(int compressors, int reverbs, int equalizers);
+        int gearCharge = 20;
     };
 
     void beginRecordingSession( ControlRoom controlRoomA);
@@ -170,7 +175,7 @@ struct RecordingStudio
     void sendInvoice();
     void hostEvent();
     void repairBrokenEquipment(); //NTS: new member function added for S&L task
-    void deliverMasterTapes(); //NTS: new member function added for S&L task
+
 };
 
 RecordingStudio::ControlRoom::ControlRoom()
@@ -248,6 +253,15 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     }
     return ( overtimeRate * numberOfActualHours) + reelsUsed;  
 }
+
+int RecordingStudio::ControlRoom::addOutboardGearCharge(bool isBooked, int gearCharge)
+{
+    RecordingStudio::OutboardGear outboardGear(int gearUpcharge);
+    for ( )
+    
+}
+
+
 
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent()
@@ -647,6 +661,7 @@ int main()
     controlRoomB.bookRoom( true, 5);
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
     controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
+    controlRoomB.addOutboardGearCharge();
     //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;   
