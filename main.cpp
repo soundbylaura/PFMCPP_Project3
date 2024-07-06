@@ -33,6 +33,7 @@ Create a branch named Part5
  */
 
 #include <iostream>
+#include <cmath>
 namespace Example 
 {
 struct Bar 
@@ -82,9 +83,8 @@ struct Bicycle
     int bottleHolders = 2;
     int rides = { 5 }; //a member variable that IS initialized in-class
 
-    
-    void beginRideToWork(); //NTS: new member function added for S&L task
-    void beginRideToHome();  //NTS: new member function added for S&L task
+    void startServiceCheck( int numGearsChecked, bool hasDiscBrakes);  //NTS: new member function added for S&L task
+    void repairSpokes();  //NTS: new member function added for S&L task
     void transportPerson();
     void rollDownhill();
     void makeRepairs()
@@ -107,8 +107,6 @@ void Bicycle::rollDownhill()
 {
     std::cout << "Roll downhill initial ppi: " << tireAirPressure << ". Required bottle holders: " << bottleHolders << std::endl; //making a member function use initialized member variables via std::cout
 }
-// void Bicycle::makeRepairs(){}
-
 
 struct RecordingStudio
 {
@@ -491,8 +489,8 @@ struct SignalProcessor
     float processSample( float inputSample ) { return inputSample * 2; }
     void savePreset();
     void getNumSamples();
-    int getNumChannels();
-    void startProgram();
+    int getNumChannels(); //NTS: new member function added for S&L task
+    void startProgram(); //NTS: new member function added for S&L task
 
 };
 
@@ -530,8 +528,8 @@ struct DSPEngine
     float modifyGain();
     bool enableOutput();
     float showGainOutputLevel();
-    float increaseWetLevel();
-    float decreaseGainRampDuration();
+    float increaseWetLevel(); //NTS: new member function added for S&L task
+    float decreaseGainRampDuration(); //NTS: new member function added for S&L task
 };
 
 DSPEngine::DSPEngine() : wetLevel(100)
