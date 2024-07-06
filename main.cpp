@@ -154,13 +154,6 @@ struct RecordingStudio
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
-        int addOutboardGearCharge( bool isBooked = true, int gearCharge = 20); //NTS: new member function added for S&L task
-    };
-
-    struct OutboardGear
-    {
-        OutboardGear(int compressors, int reverbs, int equalizers);
-        int gearCharge = 20;
     };
 
     void beginRecordingSession( ControlRoom controlRoomA);
@@ -174,8 +167,15 @@ struct RecordingStudio
     }
     void sendInvoice();
     void hostEvent();
-    void repairBrokenEquipment(); //NTS: new member function added for S&L task
+    int addExtraClientsCharge( int hours, int paperTowels, int timeCharged); //NTS: new member function added for S&L task
+};
 
+struct StudioCleaning
+{
+    StudioCleaning(int cleaningFee = 500);
+    int hours = 4;
+    int paperTowels = 12;
+    int timeCharged = 0;
 };
 
 RecordingStudio::ControlRoom::ControlRoom()
@@ -254,19 +254,22 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     return ( overtimeRate * numberOfActualHours) + reelsUsed;  
 }
 
-int RecordingStudio::ControlRoom::addOutboardGearCharge(bool isBooked, int gearCharge)
-{
-    RecordingStudio::OutboardGear outboardGear(int gearUpcharge);
-    for ( )
-    
-}
-
-
-
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent()
 {
     std::cout << "After the compiler allocates the space required by the type, it calls a special function called the constructor." << std::endl;
+}
+
+int RecordingStudio::addExtraClientsCharge( int hours, int paperTowels, int timeCharged)
+{
+    StudioCleaning studioCleaning(timeCharged);
+    while( studioCleaning.hours <= 1)
+    {
+        ++studioCleaning.hours;
+        std::cout << "Materials charge: " << paperTowels << std::endl;
+        if (studioCleaning.hours >= 4)
+            std::cout << "Extra cleaning fee of: $" << paperTowels * hours << "dollars." << std::endl;
+    }
 }
 
 
@@ -661,7 +664,6 @@ int main()
     controlRoomB.bookRoom( true, 5);
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
     controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
-    controlRoomB.addOutboardGearCharge();
     //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;   
@@ -674,6 +676,7 @@ int main()
     soundbylaura.hostEvent();
     soundbylaura.recordAudio();
     soundbylaura.sendInvoice();
+    soundbylaura.addExtraClientsCharge( 8, 8, 8);
 
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
 
