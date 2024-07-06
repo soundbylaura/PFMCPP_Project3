@@ -77,14 +77,22 @@ int main()
 struct Bicycle
 {
     Bicycle(); 
-    int numGears; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
+    int numGears = 21;
     float tireAirPressure { 70.0f }; //a member variable that IS initialized in-class
     std::string handlebar = "Flat"; //a member variable that IS initialized in-class
     int bottleHolders = 2;
     int rides = { 5 }; //a member variable that IS initialized in-class
 
-    void startServiceCheck( int numGearsChecked, bool hasDiscBrakes);  //NTS: new member function added for S&L task
-    void repairSpokes();  //NTS: new member function added for S&L task
+    struct Spokes
+    {
+        Spokes();
+        int maxNumSpokes = 8;
+        int minNumSpokes = 0;
+
+        void repairSpokes( int spokeNumber );  //NTS: new member function added for S&L task
+
+    };
+
     void transportPerson();
     void rollDownhill();
     void makeRepairs()
@@ -98,6 +106,11 @@ Bicycle::Bicycle()
     std::cout << "Bicycle" << std::endl;
 }
 
+Bicycle::Spokes::Spokes()
+{
+    std::cout << "Spokes" << std::endl;
+}
+
 void Bicycle::transportPerson()
 {
     std::cout << "A constructor's job is to set up the initial values of the member variables. " <<std::endl; 
@@ -106,6 +119,17 @@ void Bicycle::transportPerson()
 void Bicycle::rollDownhill()
 {
     std::cout << "Roll downhill initial ppi: " << tireAirPressure << ". Required bottle holders: " << bottleHolders << std::endl; //making a member function use initialized member variables via std::cout
+}
+
+void Bicycle::Spokes::repairSpokes( int spokeNumber )
+{
+    while( spokeNumber < 8)
+    { 
+        ++spokeNumber;
+        std::cout << "You are on spoke number: " << spokeNumber << std::endl;
+        if( spokeNumber >= maxNumSpokes )
+            std::cout << "All spokes fixed." << std::endl;
+    } 
 }
 
 struct RecordingStudio
@@ -609,6 +633,10 @@ int main()
     purple.transportPerson(); //Note to self:  I am calling the member functions of the UDT instance
     purple.rollDownhill();
     purple.makeRepairs();
+    // purple.repairSpokes( 0 );
+
+    Bicycle::Spokes wheel;
+    wheel.repairSpokes ( 0 );
 
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 
