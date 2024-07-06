@@ -167,16 +167,9 @@ struct RecordingStudio
     }
     void sendInvoice();
     void hostEvent();
-    int addExtraClientsCharge( int hours, int paperTowels, int timeCharged); //NTS: new member function added for S&L task
+    int chargeCleaningFee( int hours, int duration, int labor ); //NTS: new member function added for S&L task
 };
 
-struct StudioCleaning
-{
-    StudioCleaning(int cleaningFee = 500);
-    int hours = 4;
-    int paperTowels = 12;
-    int timeCharged = 0;
-};
 
 RecordingStudio::ControlRoom::ControlRoom()
 {
@@ -259,19 +252,6 @@ void RecordingStudio::hostEvent()
 {
     std::cout << "After the compiler allocates the space required by the type, it calls a special function called the constructor." << std::endl;
 }
-
-int RecordingStudio::addExtraClientsCharge( int hours, int paperTowels, int timeCharged)
-{
-    StudioCleaning studioCleaning(timeCharged);
-    while( studioCleaning.hours <= 1)
-    {
-        ++studioCleaning.hours;
-        std::cout << "Materials charge: " << paperTowels << std::endl;
-        if (studioCleaning.hours >= 4)
-            std::cout << "Extra cleaning fee of: $" << paperTowels * hours << "dollars." << std::endl;
-    }
-}
-
 
 struct AudioInterface
 {
@@ -657,7 +637,6 @@ int main()
 
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 
-
     RecordingStudio soundbylaura;//Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
     RecordingStudio::ControlRoom controlRoomB;//Note to self: Creates an instance of the nested RecordingStudio::ControlRoom struct named controlRoomB.
 
@@ -676,11 +655,9 @@ int main()
     soundbylaura.hostEvent();
     soundbylaura.recordAudio();
     soundbylaura.sendInvoice();
-    soundbylaura.addExtraClientsCharge( 8, 8, 8);
 
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
 
-    
     AudioInterface studio1810C;
     studio1810C.outputAudio();
     studio1810C.receiveAudio();
