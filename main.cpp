@@ -415,6 +415,13 @@ void StereoWidenerAudioPlugin::MixKnob::calculateTickMarks()
 }
 
 
+struct DefaultFont
+{
+    DefaultFont(int n) : fontSize(n) { }
+    int fontSize = 16;
+    int fontBrightness = 0;
+};
+
 struct GraphicalUserInterface
 {
     GraphicalUserInterface();
@@ -427,9 +434,18 @@ struct GraphicalUserInterface
     void showDisplayInputLevel(); 
     int showDisplayAttenuation();
     float addParameterMod();
-    int increaseSliderWidth(); //NTS: new member function added for S&L task
-    int decreaseFontSize();  //NTS: new member function added for S&L task
-    
+
+    DefaultFont decreaseFontSize( int startSize, int endSize ) //NTS: new member function added for S&L task
+    {
+        DefaultFont defaultFont(startSize);
+        while( defaultFont.fontSize < 6 )
+        {
+           ++defaultFont.fontSize;
+            std::cout << "Font size is: " << defaultFont.fontSize << std::endl;
+                return endSize;
+        }
+            return 0;
+    }
 };
 
 GraphicalUserInterface::GraphicalUserInterface() : windowWidth(50), windowHeight(50)
@@ -447,6 +463,7 @@ int GraphicalUserInterface::showDisplayAttenuation()
     return 34;
 }
 float GraphicalUserInterface::addParameterMod() { return 44.44f; }
+
 
 
 struct License
@@ -708,6 +725,8 @@ int main()
     darkMode.showDisplayInputLevel();
     darkMode.showDisplayAttenuation();
     darkMode.addParameterMod();
+    darkMode.decreaseFontSize( 2, 5 ); 
+    std::cout << "Max font size reached." << std::endl;
 
     std::cout << "In dark mode the background is: " << (darkMode.backgroundColor) << "\n" << std::endl;
 
