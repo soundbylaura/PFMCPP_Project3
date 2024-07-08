@@ -256,7 +256,9 @@ void RecordingStudio::hostEvent()
 struct AudioInterface
 {
     AudioInterface();
-    int audioInputs;
+    int audioInputs = 2;
+    int audioOutputs = 2;
+    int maxOutputs = 4;
     std::string inputType = "XLR";
     std::string enclosureMaterial = "Metal";
     std::string outputType = "XLR";
@@ -269,11 +271,10 @@ struct AudioInterface
     float displayLevels();
     void outputAudio();
     void getNumInputs();
-    bool turnOnPhantomPower(); //NTS: new member function added for S&L task
-    bool turnOnLineInput(); //NTS: new member function added for S&L task
+    int scanAudioOutputs( int totalOutputs ); //NTS: new member function added for S&L task
 };
 
-AudioInterface::AudioInterface() : audioInputs(16)
+AudioInterface::AudioInterface()
 {
     std::cout << "Audio Interface" << std::endl;
 }
@@ -286,6 +287,18 @@ void AudioInterface::outputAudio()
 void AudioInterface::getNumInputs()
 {
     std::cout << "Audio inputs: " << audioInputs << std::endl;
+}
+
+int AudioInterface::scanAudioOutputs( int totalOutputs )
+{
+    while( totalOutputs < 4)
+    {
+        ++totalOutputs;
+        std::cout << "Scanning output number: " << totalOutputs << std::endl;
+        if( totalOutputs >= maxOutputs )
+            return maxOutputs;
+    }
+    return 0;
 }
 
 
@@ -663,6 +676,9 @@ int main()
     studio1810C.receiveAudio();
     studio1810C.displayLevels();
     studio1810C.getNumInputs();
+    studio1810C.scanAudioOutputs(0);
+
+    std::cout << "Max outputs supported = " << (studio1810C.maxOutputs) << std::endl;
 
     std::cout << "The type of audio output is: " << (studio1810C.outputType) << "\n " << std::endl;
 
