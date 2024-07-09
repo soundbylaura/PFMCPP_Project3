@@ -599,7 +599,7 @@ struct DSPEngine
     DSPEngine();
     float gainInputLevel { 0.0f} ;
     float gainRampDuration = 3482.0f;
-    float wetLevel = 0.0f;
+    float wetLevel;
     std::string effect = "Chorus";
     float gainOutputLevel { -6.4f} ;
 
@@ -608,7 +608,6 @@ struct DSPEngine
     bool enableOutput();
     float showGainOutputLevel();
     float increaseWetLevel(); //NTS: new member function added for S&L task
-    float decreaseGainRampDuration(); //NTS: new member function added for S&L task
 };
 
 DSPEngine::DSPEngine() : wetLevel(100)
@@ -627,6 +626,20 @@ float DSPEngine::showGainOutputLevel()
     std::cout << "Gain out: " << gainOutputLevel << std::endl;
     return gainOutputLevel;
 }
+
+float DSPEngine::increaseWetLevel()
+{
+    float dryLevel = 0.0f;
+    while( dryLevel == 0.0f )
+    {
+        ++dryLevel;
+        std::cout << "Dry level and wet level have been changed." << std::endl;
+        if( dryLevel <= wetLevel )
+            return wetLevel;
+    }
+    return 0;
+}
+
 
 
 struct EqualizerAudioPlugin
@@ -793,8 +806,10 @@ int main()
     optimum.modifyGain();
     optimum.enableOutput();
     optimum.showGainOutputLevel();
+    optimum.increaseWetLevel();
 
     std::cout << "Wet level: " << (optimum.wetLevel) << "\n" << std::endl;
+    std::cout << "New wet level is: " << (optimum.wetLevel) << "\n" << std::endl;
 
     
     EqualizerAudioPlugin fancEQ;
