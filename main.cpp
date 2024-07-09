@@ -554,6 +554,7 @@ struct SignalProcessor
     std::string type = "Unknown";
     float numBuffer = 2.2f;
     int program = 2;
+    int value;
 
     double changeGainToDecibels( double gainLevel );
     float processSample( float inputSample ) { return inputSample * 2; }
@@ -640,8 +641,6 @@ float DSPEngine::increaseWetLevel()
     return 0;
 }
 
-
-
 struct EqualizerAudioPlugin
 {
     EqualizerAudioPlugin();
@@ -656,6 +655,8 @@ struct EqualizerAudioPlugin
     float freqLevelChange();
     void buildAType();
     void addIdentification();
+    void prepareSignal();
+    
 };
 
 EqualizerAudioPlugin::EqualizerAudioPlugin() : IDnumber(8)
@@ -672,6 +673,15 @@ void EqualizerAudioPlugin::buildAType()
 void EqualizerAudioPlugin::addIdentification()
 {
     std::cout << "Registration number: " << IDnumber << std::endl;
+}
+void EqualizerAudioPlugin::prepareSignal()
+{
+    for( int s = 0; s < 5; s += 2 )
+    {
+        SignalProcessor a;
+        a.value += s;
+        std::cout << " getting ready." << std::endl;
+    }
 }
   
 /*
@@ -817,6 +827,7 @@ int main()
     fancEQ.displayFreqLevelChange();
     fancEQ.freqLevelChange();
     fancEQ.addIdentification();
+    fancEQ.prepareSignal();
 
     std::cout << "Made by: " << (fancEQ.company.companyName) << "\n" << std::endl;
 
