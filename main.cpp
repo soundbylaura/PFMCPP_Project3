@@ -478,7 +478,7 @@ struct License
     char displayTextBody();
     char designWebsite();
     void enableCopyProtection();
-    void changeTextBodySize(); //NTS: new member function added for S&L task
+    void sendReminderEmail(); //NTS: new member function added for S&L task
 };
 
 License::License()
@@ -492,6 +492,16 @@ void License::enableCopyProtection()
 {
     std::cout << "If no constructor is written, the compiler uses the Implicit Constructor." << std::endl;
     std::cout << "The correct font size is: " << bodyTextFontSize << std::endl;
+}
+
+void License::sendReminderEmail()
+{
+    bool hasPaid =  true;
+    while(hasPaid)
+    {
+        hasPaid = false;
+        std::cout << "Send reminder email? " << (isExecuted ? "yes" : "no" ) << std::endl;
+    }
 }
 
 
@@ -735,6 +745,7 @@ int main()
     EULA.enableCopyProtection();
     EULA.displayTextBody();
     EULA.designWebsite();
+    EULA.sendReminderEmail();
 
     std::cout << "Is copy protection enabled? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
 
