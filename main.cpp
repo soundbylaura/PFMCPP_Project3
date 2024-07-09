@@ -496,7 +496,7 @@ void License::enableCopyProtection()
 
 void License::sendReminderEmail()
 {
-    bool hasPaid =  true;
+    bool hasPaid = true;
     while(hasPaid)
     {
         hasPaid = false;
@@ -517,8 +517,7 @@ struct Company
     void createPlugin();
     void authEnable();
     void signContract();
-    int hireNewEngineers(); //NTS: new member function added for S&L task
-    float buyNewVideoMonitor(); //NTS: new member function added for S&L task
+    void hireNewEngineers( int clients); //NTS: new member function added for S&L task
 };
 
 Company::Company() : companyEmployees(1)
@@ -534,6 +533,16 @@ void Company::authEnable()
 void Company::signContract()
 {
     std::cout << "We write constructors with (); to indicate it's a declaration." << std::endl;
+}
+
+void Company::hireNewEngineers( int clients)
+{
+    while( clients < 5 )
+    {
+        ++clients;
+        if(clients >= 5)
+            std::cout << "Hire a new engineer." << std::endl;
+    }
 }
 
 
@@ -754,6 +763,9 @@ int main()
     SBL.signContract();
     SBL.createPlugin();
     SBL.authEnable();
+
+    Company roster;
+    roster.hireNewEngineers ( 3 );
 
     std::cout << "The number of employees creating a plugin is: " << (SBL.companyEmployees) << "\n" << std::endl;
 
