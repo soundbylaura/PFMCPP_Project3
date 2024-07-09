@@ -559,8 +559,7 @@ struct SignalProcessor
     float processSample( float inputSample ) { return inputSample * 2; }
     void savePreset();
     void getNumSamples();
-    int getNumChannels(); //NTS: new member function added for S&L task
-    void startProgram(); //NTS: new member function added for S&L task
+    void startProgram( float samples ); //NTS: new member function added for S&L task
 
 };
 
@@ -582,6 +581,16 @@ void SignalProcessor::savePreset()
 void SignalProcessor::getNumSamples()
 {
     std::cout << "Number of samples available: " << numSamples << std::endl;
+}
+
+void SignalProcessor::startProgram( float samples )
+{
+   while( samples <= 256.0f)
+   {
+       ++samples;
+       if( samples == 256.0f )
+           std::cout << "Signal processor ready." << std::endl;
+   }
 }
 
 
@@ -679,7 +688,6 @@ int main()
     purple.transportPerson(); //Note to self:  I am calling the member functions of the UDT instance
     purple.rollDownhill();
     purple.makeRepairs();
-    // purple.repairSpokes( 0 );
 
     Bicycle::Spokes wheel;
     wheel.repairSpokes ( 0 );
@@ -775,6 +783,7 @@ int main()
     comp.changeGainToDecibels( 0.0); 
     comp.processSample( 1.1f);
     comp.getNumSamples();
+    comp.startProgram( 250.0f );
 
     std::cout << "Your saved preset name is: " << (comp.type) << "\n" << std::endl;
 
