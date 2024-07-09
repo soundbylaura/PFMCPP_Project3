@@ -71,9 +71,6 @@ int main()
 //call Example::main() in main()
 
 
-
-
-
 struct Bicycle
 {
     Bicycle(); 
@@ -132,6 +129,12 @@ void Bicycle::Spokes::repairSpokes( int spokeNumber )
     } 
 }
 
+struct Facility
+{
+    Facility ( int c) : hoursBooked(c) { }
+    int hoursBooked = 8;
+};
+
 struct RecordingStudio
 {
     RecordingStudio();
@@ -149,7 +152,6 @@ struct RecordingStudio
         float ratePerHour = 500.0f;
         std::string consoleType = "Analog";
         bool clientHasEngineer = false;
-        int hoursBooked = 8;
 
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
@@ -167,7 +169,18 @@ struct RecordingStudio
     }
     void sendInvoice();
     void hostEvent();
-    int chargeCleaningFee( int hours, int duration, int labor ); //NTS: new member function added for S&L task
+
+    Facility chargeCleaningFee( int start = 0, int laborFee = 10 )
+    {
+        Facility c(start);
+        while( c.hoursBooked <= 10 )
+        {
+            ++c.hoursBooked;
+            std::cout << "Labor fee added: " << c.hoursBooked + laborFee << std::endl;
+                return c;                
+        }
+        return Facility {-1};
+    }
 };
 
 
@@ -252,6 +265,7 @@ void RecordingStudio::hostEvent()
 {
     std::cout << "After the compiler allocates the space required by the type, it calls a special function called the constructor." << std::endl;
 }
+
 
 struct AudioInterface
 {
@@ -717,8 +731,11 @@ int main()
 
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 
+    RecordingStudio allStudios;
+    allStudios.chargeCleaningFee( 0, 10);
+    
     RecordingStudio soundbylaura;//Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
-    RecordingStudio::ControlRoom controlRoomB;//Note to self: Creates an instance of the nested RecordingStudio::ControlRoom struct named controlRoomB.
+    RecordingStudio::ControlRoom  controlRoomB;//Note to self: Creates an instance of the nested RecordingStudio::ControlRoom struct named controlRoomB.
 
     controlRoomB.bookRoom( true, 5);
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
