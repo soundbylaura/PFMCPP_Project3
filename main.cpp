@@ -274,11 +274,9 @@ void RecordingStudio::ControlRoom::resetLights ( int hoursTotal)
     {
         ControlRoom control;
         control.hoursOn += on;
-        if ( hoursTotal >= 9 )
-        std::cout << "Lights reset after " << hoursTotal << " hours." << std::endl;
     }
+    std::cout << "Lights reset after " << hoursTotal << " hours." << std::endl;
 }
-
 
 struct AudioInterface
 {
@@ -455,7 +453,7 @@ void StereoWidenerAudioPlugin::showPluginWindow( float mem)
     {
         ++mem;
         if( mem >= memoryAllocated )
-        std::cout << "Welcome to SWAP" << std::endl;
+            std::cout << "Welcome to SWAP" << std::endl;
     }
 }
 
@@ -488,7 +486,8 @@ struct GraphicalUserInterface
             std::cout << "Font size is: " << defaultFont.fontSize << std::endl;
                 return endSize;
         }
-            return 0;
+        
+        return 0;
     }
 };
 
@@ -724,8 +723,8 @@ void EqualizerAudioPlugin::prepareSignal()
     {
         SignalProcessor a;
         a.value += s;
-        std::cout << " getting ready." << std::endl;
     }
+    std::cout << " getting ready." << std::endl;
 }
   
 /*
