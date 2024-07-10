@@ -152,10 +152,12 @@ struct RecordingStudio
         float ratePerHour = 500.0f;
         std::string consoleType = "Analog";
         bool clientHasEngineer = false;
+        int hoursOn;
 
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
+        void resetLights ( int hoursOn);
     };
 
     void beginRecordingSession( ControlRoom controlRoomA);
@@ -264,6 +266,17 @@ void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent()
 {
     std::cout << "After the compiler allocates the space required by the type, it calls a special function called the constructor." << std::endl;
+}
+
+void RecordingStudio::ControlRoom::resetLights ( int hoursTotal)
+{
+    for (int on = 1; on < 10; on += 1 )
+    {
+        ControlRoom control;
+        control.hoursOn += on;
+        if ( hoursTotal >= 9 )
+        std::cout << "Lights reset after " << hoursTotal << " hours." << std::endl;
+    }
 }
 
 
@@ -740,7 +753,9 @@ int main()
     controlRoomB.bookRoom( true, 5);
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
     controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
+    controlRoomB.resetLights ( 10);
     //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
+
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;   
 
