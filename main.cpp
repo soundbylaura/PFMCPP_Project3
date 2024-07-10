@@ -346,14 +346,13 @@ struct StereoWidenerAudioPlugin
         int sliderWidth = 2;
         int ticksOnSlider;
         std::string sliderColor = "Black";
+        int bytesUsed();
 
         void getStateInformation( int sizeInBytes, float inputLevel);
         void prepareToPlay( double sampleRate, int samplesPerBlock);
         bool getBypassState( bool customBypassButton, bool nativeBypassButton);
         void calculateTickMarks();
-        void changeKnobColor(); //NTS: new member function added for S&L task
-        bool useSaturation(); //NTS: new member function added for S&L task
-
+        void useSaturation(); //NTS: new member function added for S&L task
     };
 
     void increaseWetness( MixKnob increase);
@@ -364,8 +363,6 @@ struct StereoWidenerAudioPlugin
     char addTextInfo();
     float widenSignal();
     int showPluginWindow(); //NTS: new member function added for S&L task
-    int getPluginWindowSize(); //NTS: new member function added for S&L task
-
 };
 
 StereoWidenerAudioPlugin::MixKnob::MixKnob() : ticksOnSlider(80)
@@ -440,6 +437,17 @@ void StereoWidenerAudioPlugin::MixKnob::calculateTickMarks()
 {
     std::cout << "Ticks number: " << ticksOnSlider << std::endl;
 }
+
+void StereoWidenerAudioPlugin::MixKnob::useSaturation()
+{
+    bool ready = true;
+    while ( ready )
+    {
+        ready = false;
+        std::cout << ("Plugin is ready: ") << (ready ? "true." : "false.") << std::endl;
+    }  
+}
+
 
 
 struct DefaultFont
@@ -799,6 +807,7 @@ int main()
     mix.prepareToPlay( 44100.0, 256.0f);
     mix.getBypassState( false, false);
     mix.calculateTickMarks();
+    mix.useSaturation();
 
     std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
 
