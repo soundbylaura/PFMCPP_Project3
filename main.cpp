@@ -337,6 +337,7 @@ struct StereoWidenerAudioPlugin
     float memoryAllocated { 64.0f };
     int fontSizeToolTips;
     float knobsLocation { 0.0f };
+    float memInc = 1.0f;
 
     struct MixKnob
     {
@@ -362,7 +363,7 @@ struct StereoWidenerAudioPlugin
     void captureAudio();
     char addTextInfo();
     float widenSignal();
-    int showPluginWindow(); //NTS: new member function added for S&L task
+    void showPluginWindow( float mem); //NTS: new member function added for S&L task
 };
 
 StereoWidenerAudioPlugin::MixKnob::MixKnob() : ticksOnSlider(80)
@@ -448,7 +449,15 @@ void StereoWidenerAudioPlugin::MixKnob::useSaturation()
     }  
 }
 
-
+void StereoWidenerAudioPlugin::showPluginWindow( float mem)
+{
+    while ( mem <= 64.0f)
+    {
+        ++mem;
+        if( mem >= memoryAllocated )
+        std::cout << "Welcome to SWAP" << std::endl;
+    }
+}
 
 struct DefaultFont
 {
@@ -796,6 +805,7 @@ int main()
     SBLWide.captureAudio();
     SBLWide.addTextInfo();
     SBLWide.widenSignal();
+    SBLWide.showPluginWindow( 64.0f);
 
     SBLWide.increaseWetness( mix);
     SBLWide.decreaseWetness( mix);
