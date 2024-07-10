@@ -33,6 +33,7 @@ Create a branch named Part5
  */
 
 #include <iostream>
+#include <cmath>
 namespace Example 
 {
 struct Bar 
@@ -70,17 +71,24 @@ int main()
 //call Example::main() in main()
 
 
-
-
-
 struct Bicycle
 {
     Bicycle(); 
-    int numGears; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
+    int numGears = 21;
     float tireAirPressure { 70.0f }; //a member variable that IS initialized in-class
     std::string handlebar = "Flat"; //a member variable that IS initialized in-class
-    int bottleHolders = 2; //a member variable that IS NOT initialized in-class a.k.a. uninitialized object
+    int bottleHolders = 2;
     int rides = { 5 }; //a member variable that IS initialized in-class
+
+    struct Spokes
+    {
+        Spokes();
+        int maxNumSpokes = 8;
+        int minNumSpokes = 0;
+
+        void repairSpokes( int spokeNumber );  //NTS: new member function added for S&L task
+
+    };
 
     void transportPerson();
     void rollDownhill();
@@ -95,6 +103,11 @@ Bicycle::Bicycle()
     std::cout << "Bicycle" << std::endl;
 }
 
+Bicycle::Spokes::Spokes()
+{
+    std::cout << "Spokes" << std::endl;
+}
+
 void Bicycle::transportPerson()
 {
     std::cout << "A constructor's job is to set up the initial values of the member variables. " <<std::endl; 
@@ -104,8 +117,23 @@ void Bicycle::rollDownhill()
 {
     std::cout << "Roll downhill initial ppi: " << tireAirPressure << ". Required bottle holders: " << bottleHolders << std::endl; //making a member function use initialized member variables via std::cout
 }
-// void Bicycle::makeRepairs(){}
 
+void Bicycle::Spokes::repairSpokes( int spokeNumber )
+{
+    while( spokeNumber < 8)
+    { 
+        ++spokeNumber;
+        std::cout << "You are on spoke number: " << spokeNumber << std::endl;
+        if( spokeNumber >= maxNumSpokes )
+            std::cout << "All spokes fixed." << std::endl;
+    } 
+}
+
+struct Facility
+{
+    Facility ( int c) : hoursBooked(c) { }
+    int hoursBooked = 8;
+};
 
 struct RecordingStudio
 {
@@ -115,7 +143,7 @@ struct RecordingStudio
     float expenseCatering { 300.0f };
     float expenseInsurance = 1100.0f;
     int employees {8};
-    int discount;
+    int discount = 10;
 
     struct ControlRoom
     {
@@ -124,11 +152,12 @@ struct RecordingStudio
         float ratePerHour = 500.0f;
         std::string consoleType = "Analog";
         bool clientHasEngineer = false;
-        int hoursBooked = 8;
+        int hoursOn;
 
         void bookRoom( bool isBooked = true, int numberOfClients = 5);
         void prepareRoom( bool powerOn = true, bool roomCleaned = true, int numberOfAssistants = 1, float rateForAssistant = 5.0f);
         float caclulateTotalFee( float numberOfActualHours = 12.0f, float overtimeRate = 650.50f, float reelsUsed = 4.0f);
+        void resetLights ( int hoursOn);
     };
 
     void beginRecordingSession( ControlRoom controlRoomA);
@@ -142,7 +171,20 @@ struct RecordingStudio
     }
     void sendInvoice();
     void hostEvent();
+
+    Facility chargeCleaningFee( int start = 0, int laborFee = 10 )
+    {
+        Facility c(start);
+        while( c.hoursBooked <= 10 )
+        {
+            ++c.hoursBooked;
+            std::cout << "Labor fee added: " << c.hoursBooked + laborFee << std::endl;
+                return c;                
+        }
+        return Facility {-1};
+    }
 };
+
 
 RecordingStudio::ControlRoom::ControlRoom()
 {
@@ -220,18 +262,28 @@ float RecordingStudio::ControlRoom::caclulateTotalFee( float numberOfActualHours
     return ( overtimeRate * numberOfActualHours) + reelsUsed;  
 }
 
-// void RecordingStudio::recordAudio(){}
 void RecordingStudio::sendInvoice(){}
 void RecordingStudio::hostEvent()
 {
     std::cout << "After the compiler allocates the space required by the type, it calls a special function called the constructor." << std::endl;
 }
 
+void RecordingStudio::ControlRoom::resetLights ( int hoursTotal)
+{
+    for (int on = 1; on < 10; on += 1 )
+    {
+        ControlRoom control;
+        control.hoursOn += on;
+    }
+    std::cout << "Lights reset after " << hoursTotal << " hours." << std::endl;
+}
 
 struct AudioInterface
 {
     AudioInterface();
-    int audioInputs;
+    int audioInputs = 2;
+    int audioOutputs = 2;
+    int maxOutputs = 4;
     std::string inputType = "XLR";
     std::string enclosureMaterial = "Metal";
     std::string outputType = "XLR";
@@ -244,14 +296,14 @@ struct AudioInterface
     float displayLevels();
     void outputAudio();
     void getNumInputs();
+    int scanAudioOutputs( int totalOutputs ); //NTS: new member function added for S&L task
 };
 
-AudioInterface::AudioInterface() : audioInputs(16)
+AudioInterface::AudioInterface()
 {
     std::cout << "Audio Interface" << std::endl;
 }
 
-// void AudioInterface::receiveAudio(){}
 float AudioInterface::displayLevels() { return 2.2f; }
 void AudioInterface::outputAudio()
 {
@@ -262,15 +314,28 @@ void AudioInterface::getNumInputs()
     std::cout << "Audio inputs: " << audioInputs << std::endl;
 }
 
+int AudioInterface::scanAudioOutputs( int totalOutputs )
+{
+    while( totalOutputs < 4)
+    {
+        ++totalOutputs;
+        std::cout << "Scanning output number: " << totalOutputs << std::endl;
+        if( totalOutputs >= maxOutputs )
+            return maxOutputs;
+    }
+    return 0;
+}
+
 
 struct StereoWidenerAudioPlugin
 {
     StereoWidenerAudioPlugin();
-    int GUIElements;
+    int interfaceElements;
     std::string knobsColors = "Black";
     float memoryAllocated { 64.0f };
     int fontSizeToolTips;
     float knobsLocation { 0.0f };
+    float memInc = 1.0f;
 
     struct MixKnob
     {
@@ -280,11 +345,13 @@ struct StereoWidenerAudioPlugin
         int sliderWidth = 2;
         int ticksOnSlider;
         std::string sliderColor = "Black";
+        int bytesUsed();
 
         void getStateInformation( int sizeInBytes, float inputLevel);
         void prepareToPlay( double sampleRate, int samplesPerBlock);
         bool getBypassState( bool customBypassButton, bool nativeBypassButton);
         void calculateTickMarks();
+        void useSaturation(); //NTS: new member function added for S&L task
     };
 
     void increaseWetness( MixKnob increase);
@@ -294,6 +361,7 @@ struct StereoWidenerAudioPlugin
     void captureAudio();
     char addTextInfo();
     float widenSignal();
+    void showPluginWindow( float mem); //NTS: new member function added for S&L task
 };
 
 StereoWidenerAudioPlugin::MixKnob::MixKnob() : ticksOnSlider(80)
@@ -369,12 +437,38 @@ void StereoWidenerAudioPlugin::MixKnob::calculateTickMarks()
     std::cout << "Ticks number: " << ticksOnSlider << std::endl;
 }
 
+void StereoWidenerAudioPlugin::MixKnob::useSaturation()
+{
+    bool ready = true;
+    while ( ready )
+    {
+        ready = false;
+        std::cout << ("Plugin is ready: ") << (ready ? "true." : "false.") << std::endl;
+    }  
+}
+
+void StereoWidenerAudioPlugin::showPluginWindow( float mem)
+{
+    while ( mem <= 64.0f)
+    {
+        ++mem;
+        if( mem >= memoryAllocated )
+            std::cout << "Welcome to SWAP" << std::endl;
+    }
+}
+
+struct DefaultFont
+{
+    DefaultFont(int n) : fontSize(n) { }
+    int fontSize = 16;
+    int fontBrightness = 0;
+};
 
 struct GraphicalUserInterface
 {
     GraphicalUserInterface();
-    int GUIWidth;
-    int GUIHeight;
+    int windowWidth;
+    int windowHeight;
     int sliderWidth = 40;
     std::string dialName = "Freq"; 
     std::string backgroundColor = "Purple";
@@ -382,9 +476,22 @@ struct GraphicalUserInterface
     void showDisplayInputLevel(); 
     int showDisplayAttenuation();
     float addParameterMod();
+
+    DefaultFont decreaseFontSize( int startSize, int endSize ) //NTS: new member function added for S&L task
+    {
+        DefaultFont defaultFont(startSize);
+        while( defaultFont.fontSize < 6 )
+        {
+           ++defaultFont.fontSize;
+            std::cout << "Font size is: " << defaultFont.fontSize << std::endl;
+                return endSize;
+        }
+        
+        return 0;
+    }
 };
 
-GraphicalUserInterface::GraphicalUserInterface() : GUIWidth(50), GUIHeight(50)
+GraphicalUserInterface::GraphicalUserInterface() : windowWidth(50), windowHeight(50)
 {
     std::cout << "GraphicalUserInterface" << std::endl;
 }
@@ -395,10 +502,11 @@ void GraphicalUserInterface::showDisplayInputLevel()
 }
 int GraphicalUserInterface::showDisplayAttenuation()
 {
-    std::cout << "Display changed to: " << GUIWidth << " x " << GUIHeight << std::endl;
+    std::cout << "Display changed to: " << windowWidth << " x " << windowHeight << std::endl;
     return 34;
 }
 float GraphicalUserInterface::addParameterMod() { return 44.44f; }
+
 
 
 struct License
@@ -413,6 +521,7 @@ struct License
     char displayTextBody();
     char designWebsite();
     void enableCopyProtection();
+    void sendReminderEmail(); //NTS: new member function added for S&L task
 };
 
 License::License()
@@ -428,6 +537,16 @@ void License::enableCopyProtection()
     std::cout << "The correct font size is: " << bodyTextFontSize << std::endl;
 }
 
+void License::sendReminderEmail()
+{
+    bool hasPaid = true;
+    while(hasPaid)
+    {
+        hasPaid = false;
+        std::cout << "Send reminder email? " << (isExecuted ? "yes" : "no" ) << std::endl;
+    }
+}
+
 
 struct Company
 {
@@ -441,6 +560,7 @@ struct Company
     void createPlugin();
     void authEnable();
     void signContract();
+    void hireNewEngineers( int clients); //NTS: new member function added for S&L task
 };
 
 Company::Company() : companyEmployees(1)
@@ -458,20 +578,32 @@ void Company::signContract()
     std::cout << "We write constructors with (); to indicate it's a declaration." << std::endl;
 }
 
+void Company::hireNewEngineers( int clients)
+{
+    while( clients < 5 )
+    {
+        ++clients;
+        if(clients >= 5)
+            std::cout << "Hire a new engineer." << std::endl;
+    }
+}
+
 
 struct SignalProcessor
 {
     SignalProcessor();
     float numSamples { 256.0f };
-    int numChannels;
+    int numChannels = 2;
     std::string type = "Unknown";
     float numBuffer = 2.2f;
-    int program;
+    int program = 2;
+    int value;
 
     double changeGainToDecibels( double gainLevel );
     float processSample( float inputSample ) { return inputSample * 2; }
     void savePreset();
     void getNumSamples();
+    void startProgram( float samples ); //NTS: new member function added for S&L task
 
 };
 
@@ -495,6 +627,16 @@ void SignalProcessor::getNumSamples()
     std::cout << "Number of samples available: " << numSamples << std::endl;
 }
 
+void SignalProcessor::startProgram( float samples )
+{
+   while( samples <= 256.0f)
+   {
+       ++samples;
+       if( samples == 256.0f )
+           std::cout << "Signal processor ready." << std::endl;
+   }
+}
+
 
 struct DSPEngine
 {
@@ -509,6 +651,7 @@ struct DSPEngine
     float modifyGain();
     bool enableOutput();
     float showGainOutputLevel();
+    float increaseWetLevel(); //NTS: new member function added for S&L task
 };
 
 DSPEngine::DSPEngine() : wetLevel(100)
@@ -528,12 +671,24 @@ float DSPEngine::showGainOutputLevel()
     return gainOutputLevel;
 }
 
+float DSPEngine::increaseWetLevel()
+{
+    float dryLevel = 0.0f;
+    while( dryLevel == 0.0f )
+    {
+        ++dryLevel;
+        std::cout << "Dry level and wet level have been changed." << std::endl;
+        if( dryLevel <= wetLevel )
+            return wetLevel;
+    }
+    return 0;
+}
 
 struct EqualizerAudioPlugin
 {
     EqualizerAudioPlugin();
     int IDnumber;
-    GraphicalUserInterface GUI;
+    GraphicalUserInterface interface;
     License license;
     Company company;
     SignalProcessor signalProcessor;
@@ -543,6 +698,8 @@ struct EqualizerAudioPlugin
     float freqLevelChange();
     void buildAType();
     void addIdentification();
+    void prepareSignal();
+    
 };
 
 EqualizerAudioPlugin::EqualizerAudioPlugin() : IDnumber(8)
@@ -559,6 +716,15 @@ void EqualizerAudioPlugin::buildAType()
 void EqualizerAudioPlugin::addIdentification()
 {
     std::cout << "Registration number: " << IDnumber << std::endl;
+}
+void EqualizerAudioPlugin::prepareSignal()
+{
+    for( int s = 0; s < 5; s += 2 )
+    {
+        SignalProcessor a;
+        a.value += s;
+    }
+    std::cout << " getting ready." << std::endl;
 }
   
 /*
@@ -589,16 +755,23 @@ int main()
     purple.rollDownhill();
     purple.makeRepairs();
 
+    Bicycle::Spokes wheel;
+    wheel.repairSpokes ( 0 );
+
     std::cout << "Is purple's member variable 'rides' equal to 5? " << (purple.rides == 5 ? " Yes" : " No") << "\n" << std::endl;
 
-
+    RecordingStudio allStudios;
+    allStudios.chargeCleaningFee( 0, 10);
+    
     RecordingStudio soundbylaura;//Note to self: Creates an instance of the RecordingStudio struct named soundbylaura.
-    RecordingStudio::ControlRoom controlRoomB;//Note to self: Creates an instance of the nested RecordingStudio::ControlRoom struct named controlRoomB.
+    RecordingStudio::ControlRoom  controlRoomB;//Note to self: Creates an instance of the nested RecordingStudio::ControlRoom struct named controlRoomB.
 
     controlRoomB.bookRoom( true, 5);
     controlRoomB.prepareRoom( true, true, 1, 5.0f); 
     controlRoomB.caclulateTotalFee( 12.0f, 650.50f, 4.0f);
+    controlRoomB.resetLights ( 10);
     //Note to self: Don't forget, calling functions that have arguments here expect direct values, not type declarations.
+
 
     std::cout << "Is the room being prepped?" << (controlRoomB.isBooked == true ? " Yes" : " No") << "\n" << std::endl;   
 
@@ -613,12 +786,14 @@ int main()
 
     std::cout << "Are we hosting an event today:" << (soundbylaura.employees == 0 ? " Yes" : " No") << "\n" << std::endl;
 
-    
     AudioInterface studio1810C;
     studio1810C.outputAudio();
     studio1810C.receiveAudio();
     studio1810C.displayLevels();
     studio1810C.getNumInputs();
+    studio1810C.scanAudioOutputs(0);
+
+    std::cout << "Max outputs supported = " << (studio1810C.maxOutputs) << std::endl;
 
     std::cout << "The type of audio output is: " << (studio1810C.outputType) << "\n " << std::endl;
 
@@ -629,6 +804,7 @@ int main()
     SBLWide.captureAudio();
     SBLWide.addTextInfo();
     SBLWide.widenSignal();
+    SBLWide.showPluginWindow( 64.0f);
 
     SBLWide.increaseWetness( mix);
     SBLWide.decreaseWetness( mix);
@@ -640,6 +816,7 @@ int main()
     mix.prepareToPlay( 44100.0, 256.0f);
     mix.getBypassState( false, false);
     mix.calculateTickMarks();
+    mix.useSaturation();
 
     std::cout << "The name of this knob should be: " << (mix.label) << "\n" << std::endl;
 
@@ -648,6 +825,8 @@ int main()
     darkMode.showDisplayInputLevel();
     darkMode.showDisplayAttenuation();
     darkMode.addParameterMod();
+    darkMode.decreaseFontSize( 2, 5 ); 
+    std::cout << "Max font size reached." << std::endl;
 
     std::cout << "In dark mode the background is: " << (darkMode.backgroundColor) << "\n" << std::endl;
 
@@ -656,6 +835,7 @@ int main()
     EULA.enableCopyProtection();
     EULA.displayTextBody();
     EULA.designWebsite();
+    EULA.sendReminderEmail();
 
     std::cout << "Is copy protection enabled? " << (EULA.isExecuted == true ? "Yes" : "No") << "\n" << std::endl;
 
@@ -665,6 +845,9 @@ int main()
     SBL.createPlugin();
     SBL.authEnable();
 
+    Company roster;
+    roster.hireNewEngineers ( 3 );
+
     std::cout << "The number of employees creating a plugin is: " << (SBL.companyEmployees) << "\n" << std::endl;
 
     
@@ -673,6 +856,7 @@ int main()
     comp.changeGainToDecibels( 0.0); 
     comp.processSample( 1.1f);
     comp.getNumSamples();
+    comp.startProgram( 250.0f );
 
     std::cout << "Your saved preset name is: " << (comp.type) << "\n" << std::endl;
 
@@ -682,8 +866,10 @@ int main()
     optimum.modifyGain();
     optimum.enableOutput();
     optimum.showGainOutputLevel();
+    optimum.increaseWetLevel();
 
     std::cout << "Wet level: " << (optimum.wetLevel) << "\n" << std::endl;
+    std::cout << "New wet level is: " << (optimum.wetLevel) << "\n" << std::endl;
 
     
     EqualizerAudioPlugin fancEQ;
@@ -691,6 +877,7 @@ int main()
     fancEQ.displayFreqLevelChange();
     fancEQ.freqLevelChange();
     fancEQ.addIdentification();
+    fancEQ.prepareSignal();
 
     std::cout << "Made by: " << (fancEQ.company.companyName) << "\n" << std::endl;
 
